@@ -1,2 +1,6 @@
-# operation-frontend
-Operation Web Front
+# 起動方法
+
+```bash
+yarn install
+yarn dev
+```

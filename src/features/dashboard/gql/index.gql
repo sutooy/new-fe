@@ -1,0 +1,12 @@
+query GetUser($userId: Int) {
+  user(userId: $userId) {
+    username
+    role {
+      id
+      role
+    }
+    name
+    id
+    email
+  }
+}
