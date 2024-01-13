@@ -1,8 +1,13 @@
+'use client'
+
+import { useSnackbar } from '@/contexts/snackbarContext'
 import {
   LoginDocument,
   LoginMutation,
   MutationLoginArgs,
 } from '@/generated/graphql'
+import { useTranslation } from '@/i18n/client'
+import { NAMESPACE_OPTIONS } from '@/i18n/settings'
 import { useMutation } from '@apollo/client'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import {
@@ -19,8 +24,11 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
 export const Login = () => {
+  const { t: loginT, i18n } = useTranslation(NAMESPACE_OPTIONS.login)
+
   const [login] = useMutation<LoginMutation>(LoginDocument)
   const router = useRouter()
+  const showSnackbar = useSnackbar()
 
   const {
     register,
@@ -34,7 +42,10 @@ export const Login = () => {
         if (row.data?.login.token) router.push('/dashboard')
       })
       .catch((error: any) => {
-        console.log(error.message)
+        showSnackbar({
+          newMessage: error.message,
+          newSeverity: 'error',
+        })
       })
   }
 
@@ -57,7 +68,7 @@ export const Login = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography variant={'h5'} sx={{ m: '30px' }}>
-          Sign In
+          {loginT('title')}
         </Typography>
       </Grid>
       <form onSubmit={handleSubmit(onSubmit)}>
