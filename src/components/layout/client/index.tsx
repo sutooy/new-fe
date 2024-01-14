@@ -1,9 +1,7 @@
 'use client'
 import ApploClientProvider from '@/components/providers/apollo'
 import { SnackbarProvider } from '@/contexts/snackbarContext'
-import { theme } from '@/libs/mui'
-
-import { ThemeProvider } from '@mui/material/styles'
+import { ThemeProvider } from '@/contexts/themeContext'
 import React, { useEffect, useState } from 'react'
 
 type Props = {
@@ -21,7 +19,7 @@ export const ClientLayout: React.FC<Props> = ({ children }: Props) => {
 
   if (!initialRenderComplete) return <></>
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider>
       <SnackbarProvider>
         <ApploClientProvider>{children}</ApploClientProvider>
       </SnackbarProvider>
