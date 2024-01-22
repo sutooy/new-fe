@@ -1,5 +1,5 @@
 'use client'
-import ApploClientProvider from '@/components/providers/apollo'
+import ApploClientProvider from '@/contexts/apolloContext'
 import { SnackbarProvider } from '@/contexts/snackbarContext'
 import { ThemeProvider } from '@/contexts/themeContext'
 import React, { useEffect, useState } from 'react'
