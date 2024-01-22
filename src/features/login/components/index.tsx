@@ -1,6 +1,5 @@
 'use client'
 
-import { useSnackbar } from '@/contexts/snackbarContext'
 import {
   LoginDocument,
   LoginMutation,
@@ -28,7 +27,6 @@ export const Login = () => {
 
   const [login] = useMutation<LoginMutation>(LoginDocument)
   const router = useRouter()
-  const showSnackbar = useSnackbar()
 
   const {
     register,
@@ -41,12 +39,7 @@ export const Login = () => {
       .then((row) => {
         if (row.data?.login.token) router.push('/dashboard')
       })
-      .catch((error: any) => {
-        showSnackbar({
-          newMessage: error.message,
-          newSeverity: 'error',
-        })
-      })
+      .catch((error: any) => {})
   }
 
   return (
