@@ -10,6 +10,7 @@ import { NAMESPACE_OPTIONS } from '@/i18n/settings'
 import { useMutation } from '@apollo/client'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import {
+  Alert,
   Avatar,
   Box,
   Button,
@@ -20,6 +21,7 @@ import {
 } from '@mui/material'
 import { teal } from '@mui/material/colors'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 export const Login = () => {
@@ -27,6 +29,7 @@ export const Login = () => {
 
   const [login] = useMutation<LoginMutation>(LoginDocument)
   const router = useRouter()
+  const [requestError, setRequestError] = useState('')
 
   const {
     register,
@@ -39,7 +42,9 @@ export const Login = () => {
       .then((row) => {
         if (row.data?.login.token) router.push('/dashboard')
       })
-      .catch((error: any) => {})
+      .catch((error: any) => {
+        setRequestError(error.message)
+      })
   }
 
   return (
@@ -64,6 +69,11 @@ export const Login = () => {
           {loginT('title')}
         </Typography>
       </Grid>
+      {requestError && (
+        <Alert sx={{ mb: 2 }} color="error">
+          {requestError}
+        </Alert>
+      )}
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField
           label="Username"

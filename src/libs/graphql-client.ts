@@ -5,7 +5,7 @@ export default new ApolloClient({
   link: new HttpLink({
     uri: process.env.NEXT_PUBLIC_BFF_URL,
     headers: {
-      // TODO: authorizationをSet
+      // TODO: AuthorizationをcookieからSet
       Authorization: 'dummy',
     },
   }),
