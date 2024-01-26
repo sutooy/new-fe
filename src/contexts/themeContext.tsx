@@ -23,7 +23,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ['Formale Grotesque', 'sans-serif'].join(','),
+    fontFamily: ['Arial', 'Roboto'].join(','),
     button: {
       textTransform: 'none',
     },

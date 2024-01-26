@@ -3,7 +3,7 @@ const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin')
 const withVanillaExtract = createVanillaExtractPlugin()
 
 const nextConfig = {
-  output: 'standalone'
+  output: 'standalone',
 }
 
 module.exports = withVanillaExtract(nextConfig)

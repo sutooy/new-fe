@@ -1,3 +1,4 @@
+import { Login } from '@/features/login/components/index'
 import { getTranslation } from '@/i18n'
 import {
   DEFAULT_NS,
@@ -18,5 +19,5 @@ export async function generateMetadata({
 }
 
 export default function Page() {
-  return <>おはよう</>
+  return <Login></Login>
 }
