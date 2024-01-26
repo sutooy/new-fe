@@ -1,3 +1,6 @@
 {
-  "title": "ログイン"
+  "metadata": {
+    "title": "ログイン",
+    "description": "ログイン"
+  }
 }
