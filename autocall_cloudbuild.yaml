@@ -1,0 +1,43 @@
+steps:
+  - id: build
+    name: 'gcr.io/kaniko-project/executor:latest'
+    args:
+      - --dockerfile=Dockerfile
+      - --destination=asia.gcr.io/$PROJECT_ID/operation-frontend:$COMMIT_SHA
+      - --destination=asia.gcr.io/$PROJECT_ID/operation-frontend:latest
+      - --build-arg=COMMIT_SHA=$COMMIT_SHA
+      - --build-arg=NEXT_PUBLIC_APP_ENV=$_NEXT_PUBLIC_APP_ENV
+      - --build-arg=NEXT_PUBLIC_BFF_URL=$_NEXT_PUBLIC_BFF_URL
+      - --cache=true
+
+  - id: deploy-frontend
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    waitFor: ['build']
+    args:
+      - 'run'
+      - 'deploy'
+      - 'operation-frontend'
+      - '--image'
+      - 'asia.gcr.io/$PROJECT_ID/operation-frontend_$_ENVIRONMENT:$COMMIT_SHA'
+      - '--region'
+      - 'asia-northeast1'
+      - '--platform'
+      - 'managed'
+
+  - name: 'curlimages/curl'
+    waitFor: ['deploy-frontend']
+    entrypoint: curl
+    args:
+      - '-X'
+      - 'POST'
+      - '--data-urlencode'
+      - 'payload={"text": "$_SERVICE_NAME: デプロイが完了しました"}'
+      - '$_SLACK_WEBHOOK_URL'
+
+substitutions:
+  _SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/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'
+
+timeout: 1500s
+options:
+  machineType: 'E2_HIGHCPU_32'
