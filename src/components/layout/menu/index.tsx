@@ -10,10 +10,10 @@ import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 import Collapse from '@material-ui/core/Collapse';
+import { Style } from './index.css';
 
 
 import { useRouter } from 'next/dist/client/components/navigation';
-import styles from './index.module.scss';
 type Props = {
   // 開閉フラグ
   isOpen: boolean
@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
+
 
 export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
   const router = useRouter();
@@ -88,7 +89,7 @@ export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
         titleEN: "Homepage",
         titleID: "Homepage",
         path: "/",
-        icon: <HomeOutlinedIcon />,
+      icon: <HomeOutlinedIcon className={Style.iconSvg}/>,
         cName: "nav-name",
         disabled: false,
         subMenu: [],
@@ -97,7 +98,7 @@ export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
         titleEN: "Dashboard",
         titleID: "Menu Utama",
         path: "/main-menu",
-        icon: <DashboardIcon />,
+        icon: <DashboardIcon  className={Style.iconSvg}/>,
         cName: "nav-name",
         disabled: false,
         subMenu: [],
@@ -105,7 +106,7 @@ export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
     {
       titleEN: "Customer",
       titleID: "Pelanggan",
-      icon: <GroupsIcon />,
+      icon: <GroupsIcon  className={Style.iconSvg}/>,
       cName: "nav-name",
       disabled:false,
       subMenu: subMenu,
@@ -113,7 +114,7 @@ export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
     {
       titleEN: "aa",
       titleID: "bb",
-      icon: <GroupsIcon />,
+      icon: <GroupsIcon  className={Style.iconSvg}/>,
       cName: "nav-name",
       disabled:false,
       subMenu: subMenu,
@@ -133,7 +134,7 @@ export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
   };
 
   return (
-    <div className={styles.menu}>
+    <div className={Style.menu}>
       <List
         component="nav"
         aria-labelledby="nested-list-subheader" 
@@ -142,11 +143,11 @@ export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
           <div key={main.titleEN}>
             {/* メインメニュー */}
             <ListItem button onClick={() => handleClick(main, mainIndex)}>
-              <ListItemIcon>
+              <ListItemIcon className={`${Style.icon} ${!isOpen && Style.minIcon}`}>
                 {main.icon}
               </ListItemIcon>
               {isOpen && <ListItemText primary={main.titleEN} />}
-              {(main.subMenu.length > 0 && isOpen) && (openSubMenu[mainIndex] ? <ExpandLess /> : <ExpandMore />)}
+              {(main.subMenu.length > 0 && isOpen) && (openSubMenu[mainIndex] ? <ExpandLess className={Style.iconSvg}/> : <ExpandMore className={Style.iconSvg}/>)}
             </ListItem>
             {/* サブメニュー */}
             {isOpen &&
