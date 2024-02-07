@@ -4,7 +4,6 @@ import {
   KEY_PREFIX_OPTIONS,
   LANGUAGE_OPTIONS,
 } from '@/i18n/settings';
-import { Button, TextField } from "@mui/material";
 
 export async function generateMetadata({
   params: { lng = LANGUAGE_OPTIONS.ENGLISH },
@@ -19,11 +18,5 @@ export async function generateMetadata({
 }
 
 export default function Page() {
-  return (
-    <div>
-      <TextField label="メールアドレス" />
-      <TextField label="パスワード" />
-      <Button variant="contained">ログイン</Button>
-    </div>
-  )
+  return <>おはよう</>
 }

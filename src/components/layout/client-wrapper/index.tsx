@@ -1,29 +1,188 @@
 'use client'
+import { Menu } from '@/components/layout/menu/index'
+import { H1Header } from '@/components/shared/h1-header/index'
 import ApploClientProvider from '@/contexts/apolloContext'
 import { AuthProvider } from '@/contexts/authContext'
 import { SnackbarProvider } from '@/contexts/snackbarContext'
 import { ThemeProvider } from '@/contexts/themeContext'
+import mouvsLogo from '@/images/logo-movus-grey.svg'
+import CancelIcon from '@mui/icons-material/Cancel'
+import MenuIcon from '@mui/icons-material/Menu'
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
+import MuiDrawer from '@mui/material/Drawer'
+import IconButton from '@mui/material/IconButton'
+import { CSSObject, Theme, styled } from '@mui/material/styles'
+import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
+import styles from './index.module.scss'
+
 
 type Props = {
   children: React.ReactNode
 }
 
+const drawerWidth = 240;
+
+const openedMixin = (theme: Theme): CSSObject => ({
+  width: drawerWidth,
+  transition: theme.transitions.create('width', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.enteringScreen,
+  }),
+  overflowX: 'hidden',
+});
+
+const closedMixin = (theme: Theme): CSSObject => ({
+  transition: theme.transitions.create('width', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  overflowX: 'hidden',
+  width: `calc(${theme.spacing(7)} + 1px)`,
+  [theme.breakpoints.up('sm')]: {
+    width: `calc(${theme.spacing(8)} + 1px)`,
+  },
+});
+
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+}));
+
+interface AppBarProps extends MuiAppBarProps {
+  open?: boolean;
+}
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== 'open',
+})<AppBarProps>(({ theme, open }) => ({
+  zIndex: theme.zIndex.drawer + 1,
+  transition: theme.transitions.create(['width', 'margin'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
+
+const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+  ({ theme, open }) => ({
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
+    boxSizing: 'border-box',
+    ...(open && {
+      ...openedMixin(theme),
+      '& .MuiDrawer-paper': openedMixin(theme),
+    }),
+    ...(!open && {
+      ...closedMixin(theme),
+      '& .MuiDrawer-paper': closedMixin(theme),
+    }),
+  }),
+);
+
+
+
 export const ClientWrapperLayout: React.FC<Props> = ({ children }: Props) => {
   // i18nの言語推定の反映を待ち、hydration errorを避ける
   const [initialRenderComplete, setInitialRenderComplete] =
     useState<boolean>(false)
+  
+  
 
   useEffect(() => {
     setInitialRenderComplete(true)
   }, [])
+
+  const [isFixedNav, serIsFixedNav] = useState(false);
+
+  const windowScroll = () => {
+    serIsFixedNav(window.scrollY > 50);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", windowScroll);
+    return () => window.removeEventListener("scroll", windowScroll);
+  }, []);
+
+  // メニュー開閉フラグ
+  const [open, setOpen] = React.useState(true);
+
+  const handleDrawer = (isOpen:boolean) => {
+    setOpen(isOpen);
+  };
 
   if (!initialRenderComplete) return <></>
   return (
     <ThemeProvider>
       <AuthProvider>
         <SnackbarProvider>
-          <ApploClientProvider>{children}</ApploClientProvider>
+          <div className={styles.layout}>
+            <Drawer variant="permanent" open={open}>
+              <div className={styles.navi}>
+                <DrawerHeader
+                  sx={{display:'block'}}
+                >
+                  {/* ロゴ */}
+                  {open && 
+                    <div className={styles.logo}>
+                      <Image src={mouvsLogo} width={144} height={23} alt="movus" />
+                    </div>
+                  }
+                  {/* 開く */}
+                  <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={() => handleDrawer(true)}
+                    edge="start"
+                    sx={{
+                      margin: '15px auto 43px',
+                      ...(open && { display: 'none' }),
+                    }}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  {/* 閉じる */}
+                  <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={() => handleDrawer(false)}
+                    edge="start"
+                    sx={{
+                      position: 'absolute',
+                      top: 0,
+                      right: 0,
+                      ...(!open && { display: 'none' }),
+                    }}
+                  >
+                    <CancelIcon />
+                  </IconButton>
+                </DrawerHeader>
+                {/* メニュー */}
+                <Menu isOpen={open}/>
+              </div>
+            </Drawer>
+            <div className={styles.main}>
+              <div className={`${styles.account} ${isFixedNav ? styles.fixed: ''} `}>アカウント</div>
+              <div className={styles.mainContent}>
+                <ApploClientProvider>
+                  <H1Header title="タイトル" subText='subsubsubsubsubsubsubsubsub'/>
+                  {children}
+                </ApploClientProvider>
+              </div>
+            </div>
+          </div>
         </SnackbarProvider>
       </AuthProvider>
     </ThemeProvider>
