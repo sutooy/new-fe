@@ -9,6 +9,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
+import { PopupMenu, PopupMenuItem } from '@/components/shared/popup-menu/index';
 import { Tooltips } from '@/components/shared/tooltip/index';
 import Collapse from '@material-ui/core/Collapse';
 import { Style } from './index.css';
@@ -23,7 +24,7 @@ type Props = {
 type SubMenu = {
   titleEN: string
   titleID: string
-  path?: string
+  path: string
   cName: string
   disabled: boolean
 }
@@ -58,22 +59,22 @@ const subMenu:SubMenu[] = [
 
 const mainMenu:Menu[] = [
   {
-      titleEN: "Homepage",
-      titleID: "Homepage",
-      path: "/",
+    titleEN: "Homepage",
+    titleID: "Homepage",
+    path: "/",
     icon: <HomeOutlinedIcon className={Style.iconSvg}/>,
       cName: "nav-name",
       disabled: false,
       subMenu: [],
   },
   {
-      titleEN: "Dashboard",
-      titleID: "Menu Utama",
-      path: "/main-menu",
-      icon: <DashboardIcon  className={Style.iconSvg}/>,
-      cName: "nav-name",
-      disabled: false,
-      subMenu: [],
+    titleEN: "Dashboard",
+    titleID: "Menu Utama",
+    path: "/main-menu",
+    icon: <DashboardIcon  className={Style.iconSvg}/>,
+    cName: "nav-name",
+    disabled: false,
+    subMenu: [],
   },
   {
     titleEN: "Customer",
@@ -105,6 +106,20 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
+
+// ポップアップメニュー用にリンク情報を詰めなおす
+const createLinkList = (subMenu: SubMenu[]): PopupMenuItem[] => {
+  const linList: PopupMenuItem[] = []
+  for (const item of subMenu) {
+    if (!item.disabled){
+      linList.push({
+        linkText: item.titleEN,
+        path: item.path
+      })
+    }
+  }
+  return linList
+}
 
 export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
   const router = useRouter();
@@ -152,10 +167,14 @@ export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
                 {isShowTooltip(main) &&
                   <Tooltips text={main.titleEN} position="left" dom={main.icon} />
                 }
-                {!isShowTooltip(main) && main.icon}
+                {!isShowTooltip(main) &&
+                  <PopupMenu items={createLinkList(main.subMenu)}>{main.icon}</PopupMenu>
+                }
               </ListItemIcon>
               {isOpen && <ListItemText primary={main.titleEN} />}
-              {(main.subMenu.length > 0 && isOpen) && (openSubMenu[mainIndex] ? <ExpandLess className={Style.iconSvg}/> : <ExpandMore className={Style.iconSvg}/>)}
+              {(main.subMenu.length > 0 && isOpen) && (
+                openSubMenu[mainIndex] ? <ExpandLess className={Style.iconSvg} /> : <ExpandMore className={Style.iconSvg} />
+              )}
             </ListItem>
             {/* サブメニュー */}
             {isOpen &&
