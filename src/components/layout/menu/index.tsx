@@ -9,6 +9,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
+import { Tooltips } from '@/components/shared/tooltip/index';
 import Collapse from '@material-ui/core/Collapse';
 import { Style } from './index.css';
 
@@ -36,6 +37,61 @@ type Menu = {
   disabled: boolean
   subMenu: SubMenu[],
 }
+
+const subMenu:SubMenu[] = [
+{
+    titleEN: "Customer",
+    titleID: "Pelanggan",
+    path: "/customer",
+    cName: "nav-name",
+    disabled: false,
+  },
+  {
+    titleEN: "Application",
+    titleID: "Permohonan",
+    path: "/application",
+    cName: "nav-name",
+    disabled: false,
+  },
+]
+
+
+const mainMenu:Menu[] = [
+  {
+      titleEN: "Homepage",
+      titleID: "Homepage",
+      path: "/",
+    icon: <HomeOutlinedIcon className={Style.iconSvg}/>,
+      cName: "nav-name",
+      disabled: false,
+      subMenu: [],
+  },
+  {
+      titleEN: "Dashboard",
+      titleID: "Menu Utama",
+      path: "/main-menu",
+      icon: <DashboardIcon  className={Style.iconSvg}/>,
+      cName: "nav-name",
+      disabled: false,
+      subMenu: [],
+  },
+  {
+    titleEN: "Customer",
+    titleID: "Pelanggan",
+    icon: <GroupsIcon  className={Style.iconSvg}/>,
+    cName: "nav-name",
+    disabled:false,
+    subMenu: subMenu,
+  },
+  {
+    titleEN: "aa",
+    titleID: "bb",
+    icon: <GroupsIcon  className={Style.iconSvg}/>,
+    cName: "nav-name",
+    disabled:false,
+    subMenu: subMenu,
+  },
+]
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -66,60 +122,7 @@ export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
   const classes = useStyles();
   
 
-  const subMenu:SubMenu[] = [
-  {
-      titleEN: "Customer",
-      titleID: "Pelanggan",
-      path: "/customer",
-      cName: "nav-name",
-      disabled: false,
-    },
-    {
-      titleEN: "Application",
-      titleID: "Permohonan",
-      path: "/application",
-      cName: "nav-name",
-      disabled: false,
-    },
-  ]
-
-
-  const mainMenu:Menu[] = [
-    {
-        titleEN: "Homepage",
-        titleID: "Homepage",
-        path: "/",
-      icon: <HomeOutlinedIcon className={Style.iconSvg}/>,
-        cName: "nav-name",
-        disabled: false,
-        subMenu: [],
-    },
-    {
-        titleEN: "Dashboard",
-        titleID: "Menu Utama",
-        path: "/main-menu",
-        icon: <DashboardIcon  className={Style.iconSvg}/>,
-        cName: "nav-name",
-        disabled: false,
-        subMenu: [],
-    },
-    {
-      titleEN: "Customer",
-      titleID: "Pelanggan",
-      icon: <GroupsIcon  className={Style.iconSvg}/>,
-      cName: "nav-name",
-      disabled:false,
-      subMenu: subMenu,
-    },
-    {
-      titleEN: "aa",
-      titleID: "bb",
-      icon: <GroupsIcon  className={Style.iconSvg}/>,
-      cName: "nav-name",
-      disabled:false,
-      subMenu: subMenu,
-    },
-  ]
+ 
 
   const [openSubMenu, setOpenSubMenu] = useState<boolean[]>(new Array<boolean>(mainMenu.length).fill(false));
 
@@ -144,7 +147,10 @@ export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
             {/* メインメニュー */}
             <ListItem button onClick={() => handleClick(main, mainIndex)}>
               <ListItemIcon className={`${Style.icon} ${!isOpen && Style.minIcon}`}>
-                {main.icon}
+                {!isOpen &&
+                  <Tooltips text={main.titleEN} position="left" dom={main.icon} />
+                }
+                {isOpen && main.icon}
               </ListItemIcon>
               {isOpen && <ListItemText primary={main.titleEN} />}
               {(main.subMenu.length > 0 && isOpen) && (openSubMenu[mainIndex] ? <ExpandLess className={Style.iconSvg}/> : <ExpandMore className={Style.iconSvg}/>)}
