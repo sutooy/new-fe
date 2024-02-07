@@ -18,5 +18,5 @@ export async function generateMetadata({
 }
 
 export default function Page() {
-  return <>おはよう</>
+  return <>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/></>
 }

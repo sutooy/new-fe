@@ -1,8 +1,7 @@
 'use client'
 import React, { useState } from 'react';
+import { Style } from './index.css';
 
-
-import styles from './index.module.scss';
 type Props = {
   // タイトル
   title: string
@@ -17,9 +16,9 @@ export const H1Header: React.FC<Props> = ({ title, subText }: Props) => {
     useState<boolean>(false)
 
   return (
-    <h1 className={styles.h1}>
-      <div className={styles.title}>{title}</div>
-      <div className={styles.subTitle}>{subText}</div>
+    <h1 className={Style.h1}>
+      <div className={Style.title}>{title}</div>
+      <div className={Style.subTitle}>{subText}</div>
     </h1>
   )
 }

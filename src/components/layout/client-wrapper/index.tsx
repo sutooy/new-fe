@@ -14,7 +14,7 @@ import IconButton from '@mui/material/IconButton'
 import { CSSObject, Theme, styled } from '@mui/material/styles'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
-import styles from './index.module.scss'
+import { Style } from './index.css'
 
 
 type Props = {
@@ -128,54 +128,54 @@ export const ClientWrapperLayout: React.FC<Props> = ({ children }: Props) => {
     <ThemeProvider>
       <AuthProvider>
         <SnackbarProvider>
-          <div className={styles.layout}>
+          <div className={Style.layout}>
             <Drawer variant="permanent" open={open}>
-              <div className={styles.navi}>
-                <DrawerHeader
-                  sx={{display:'block'}}
+              <DrawerHeader
+                sx={{display:'block'}}
+              >
+                {/* ロゴ */}
+                {open && 
+                  <div className={Style.logo}>
+                    <Image src={mouvsLogo} width={144} height={23} alt="movus" />
+                  </div>
+                }
+                {/* 開く */}
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={() => handleDrawer(true)}
+                  edge="start"
+                  sx={{
+                    margin: '15px auto 43px',
+                    ...(open && { display: 'none' }),
+                  }}
                 >
-                  {/* ロゴ */}
-                  {open && 
-                    <div className={styles.logo}>
-                      <Image src={mouvsLogo} width={144} height={23} alt="movus" />
-                    </div>
-                  }
-                  {/* 開く */}
-                  <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    onClick={() => handleDrawer(true)}
-                    edge="start"
-                    sx={{
-                      margin: '15px auto 43px',
-                      ...(open && { display: 'none' }),
-                    }}
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                  {/* 閉じる */}
-                  <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    onClick={() => handleDrawer(false)}
-                    edge="start"
-                    sx={{
-                      position: 'absolute',
-                      top: 0,
-                      right: 0,
-                      ...(!open && { display: 'none' }),
-                    }}
-                  >
-                    <CancelIcon />
-                  </IconButton>
-                </DrawerHeader>
-                {/* メニュー */}
-                <Menu isOpen={open}/>
-              </div>
+                  <MenuIcon />
+                </IconButton>
+                {/* 閉じる */}
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={() => handleDrawer(false)}
+                  edge="start"
+                  sx={{
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                    ...(!open && { display: 'none' }),
+                  }}
+                >
+                  <CancelIcon />
+                </IconButton>
+              </DrawerHeader>
+              {/* メニュー */}
+              <Menu isOpen={open}/>
             </Drawer>
-            <div className={styles.main}>
-              <div className={`${styles.account} ${isFixedNav ? styles.fixed: ''} `}>アカウント</div>
-              <div className={styles.mainContent}>
+            <div className={Style.main}>
+              <div className={`${Style.account} ${isFixedNav ? Style.accountFixed : ''} `}>
+                アカウント
+              </div>
+              <div className={Style.mainContent}>
                 <ApploClientProvider>
                   <H1Header title="タイトル" subText='subsubsubsubsubsubsubsubsub'/>
                   {children}
