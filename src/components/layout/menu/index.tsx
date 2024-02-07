@@ -106,7 +106,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
 export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
   const router = useRouter();
   
@@ -118,12 +117,8 @@ export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
     setInitialRenderComplete(true)
   }, [])
 
-
   const classes = useStyles();
   
-
- 
-
   const [openSubMenu, setOpenSubMenu] = useState<boolean[]>(new Array<boolean>(mainMenu.length).fill(false));
 
   const handleClick = (item: Menu, index: number) => {
@@ -136,6 +131,13 @@ export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
     setOpenSubMenu(newState);
   };
 
+  // ツールチップ表示判定
+  const isShowTooltip = (menu: Menu): boolean => {
+    if (isOpen) return true
+    if (menu.subMenu.length === 0) return true
+    return false
+  }
+
   return (
     <div className={Style.menu}>
       <List
@@ -147,10 +149,10 @@ export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
             {/* メインメニュー */}
             <ListItem button onClick={() => handleClick(main, mainIndex)}>
               <ListItemIcon className={`${Style.icon} ${!isOpen && Style.minIcon}`}>
-                {!isOpen &&
+                {isShowTooltip(main) &&
                   <Tooltips text={main.titleEN} position="left" dom={main.icon} />
                 }
-                {isOpen && main.icon}
+                {!isShowTooltip(main) && main.icon}
               </ListItemIcon>
               {isOpen && <ListItemText primary={main.titleEN} />}
               {(main.subMenu.length > 0 && isOpen) && (openSubMenu[mainIndex] ? <ExpandLess className={Style.iconSvg}/> : <ExpandMore className={Style.iconSvg}/>)}
