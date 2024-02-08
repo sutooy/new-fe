@@ -1,4 +1,4 @@
-import { Login } from '@/features/login/components/index'
+import { Login } from '@/features/login/index'
 import { getTranslation } from '@/i18n'
 import {
   DEFAULT_NS,
