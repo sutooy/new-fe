@@ -8,7 +8,6 @@ import { ThemeProvider } from '@/contexts/themeContext'
 import mouvsLogo from '@/images/logo-movus-grey.svg'
 import CancelIcon from '@mui/icons-material/Cancel'
 import MenuIcon from '@mui/icons-material/Menu'
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
 import MuiDrawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
 import { CSSObject, Theme, styled } from '@mui/material/styles'
@@ -52,28 +51,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
-
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(['width', 'margin'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
+;
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -98,8 +76,6 @@ export const ClientWrapperLayout: React.FC<Props> = ({ children }: Props) => {
   // i18nの言語推定の反映を待ち、hydration errorを避ける
   const [initialRenderComplete, setInitialRenderComplete] =
     useState<boolean>(false)
-  
-  
 
   useEffect(() => {
     setInitialRenderComplete(true)
@@ -117,10 +93,13 @@ export const ClientWrapperLayout: React.FC<Props> = ({ children }: Props) => {
   }, []);
 
   // メニュー開閉フラグ
-  const [open, setOpen] = React.useState(true);
-
+  const localStorageName = "minMenu"
+  const isMinMenu = localStorage.getItem(localStorageName)
+  const [open, setOpen] = React.useState(isMinMenu !== null ? JSON.parse(isMinMenu) : true);
+  debugger
   const handleDrawer = (isOpen:boolean) => {
     setOpen(isOpen);
+    localStorage.setItem(localStorageName, isOpen.toString())
   };
 
   if (!initialRenderComplete) return <></>
