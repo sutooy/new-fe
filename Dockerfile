@@ -25,6 +25,8 @@ COPY . .
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN yarn build:${ENVIRONMENT}
+RUN yarn schema
+RUN yarn copy:schema
 
 # If using npm comment out above and use below instead
 # RUN npm run build
