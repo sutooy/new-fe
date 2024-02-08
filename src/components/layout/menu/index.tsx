@@ -18,7 +18,7 @@ import { Style } from './index.css';
 import { useRouter } from 'next/dist/client/components/navigation';
 type Props = {
   // 開閉フラグ
-  isOpen: boolean
+  isMin: boolean
 }
 
 type SubMenu = {
@@ -121,7 +121,7 @@ const createLinkList = (subMenu: SubMenu[]): PopupMenuItem[] => {
   return linList
 }
 
-export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
+export const Menu: React.FC<Props> = ( {isMin }: Props) => {
   const router = useRouter();
   
   // i18nの言語推定の反映を待ち、hydration errorを避ける
@@ -148,7 +148,7 @@ export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
 
   // ツールチップ表示判定
   const isShowTooltip = (menu: Menu): boolean => {
-    if (isOpen) return true
+    if (isMin) return true
     if (menu.subMenu.length === 0) return true
     return false
   }
@@ -163,21 +163,25 @@ export const Menu: React.FC<Props> = ( {isOpen }: Props) => {
           <div key={main.titleEN}>
             {/* メインメニュー */}
             <ListItem button onClick={() => handleClick(main, mainIndex)}>
-              <ListItemIcon className={`${Style.icon} ${!isOpen && Style.minIcon}`}>
-                {isShowTooltip(main) &&
+              {isShowTooltip(main) &&
+                <ListItemIcon className={`${Style.icon} ${!isMin && Style.minIcon}`}>
+                
                   <Tooltips text={main.titleEN} position="left" dom={main.icon} />
-                }
-                {!isShowTooltip(main) &&
+                </ListItemIcon>
+              }
+              {!isShowTooltip(main) &&
+                <ListItemIcon className={`${Style.icon} ${!isMin && Style.minIcon}`}>
                   <PopupMenu items={createLinkList(main.subMenu)}>{main.icon}</PopupMenu>
-                }
-              </ListItemIcon>
-              {isOpen && <ListItemText primary={main.titleEN} />}
-              {(main.subMenu.length > 0 && isOpen) && (
+                </ListItemIcon>
+              }
+              
+              {isMin && <ListItemText primary={main.titleEN} />}
+              {(main.subMenu.length > 0 && isMin) && (
                 openSubMenu[mainIndex] ? <ExpandLess className={Style.iconSvg} /> : <ExpandMore className={Style.iconSvg} />
               )}
             </ListItem>
             {/* サブメニュー */}
-            {isOpen &&
+            {isMin &&
               <Collapse in={openSubMenu[mainIndex]} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                   {main.subMenu.map((sub: SubMenu, index: number) => (

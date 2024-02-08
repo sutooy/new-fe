@@ -96,10 +96,9 @@ export const ClientWrapperLayout: React.FC<Props> = ({ children }: Props) => {
   const localStorageName = "minMenu"
   const isMinMenu = localStorage.getItem(localStorageName)
   const [open, setOpen] = React.useState(isMinMenu !== null ? JSON.parse(isMinMenu) : true);
-  debugger
-  const handleDrawer = (isOpen:boolean) => {
-    setOpen(isOpen);
-    localStorage.setItem(localStorageName, isOpen.toString())
+  const handleDrawer = (isMin:boolean) => {
+    setOpen(isMin);
+    localStorage.setItem(localStorageName, isMin.toString())
   };
 
   if (!initialRenderComplete) return <></>
@@ -148,7 +147,7 @@ export const ClientWrapperLayout: React.FC<Props> = ({ children }: Props) => {
                 </IconButton>
               </DrawerHeader>
               {/* メニュー */}
-              <Menu isOpen={open}/>
+              <Menu isMin={open}/>
             </Drawer>
             <div className={Style.main}>
               <div className={`${Style.account} ${isFixedNav ? Style.accountFixed : ''} `}>
