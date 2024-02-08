@@ -1,6 +1,6 @@
 'use client'
 
-import { Footer } from '@/features/footer/components'
+import { Footer } from '@/features/footer'
 import {
   LoginDocument,
   LoginMutation,
