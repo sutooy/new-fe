@@ -1,4 +1,4 @@
-import { ClientWrapperLayout } from '@/components/layout/client-wrapper';
+import ApploClientProvider from '@/contexts/apolloContext';
 import { getTranslation } from '@/i18n';
 import {
   DEFAULT_NS,
@@ -33,7 +33,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AppRouterCacheProvider>
-          <ClientWrapperLayout>{children}</ClientWrapperLayout>
+          <ApploClientProvider>{children}</ApploClientProvider>
         </AppRouterCacheProvider>
         
       </body>

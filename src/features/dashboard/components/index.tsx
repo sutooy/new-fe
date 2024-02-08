@@ -1,5 +1,6 @@
 'use client'
 
+import { ClientWrapperLayout } from '@/components/layout/client-wrapper'
 import { GetUserDocument, GetUserQuery } from '@/generated/graphql'
 import { useTranslation } from '@/i18n/client'
 import { NAMESPACE_OPTIONS } from '@/i18n/settings'
@@ -16,19 +17,21 @@ export const Dashboard = () => {
 
   const { t: dashboardT } = useTranslation(NAMESPACE_OPTIONS.dashboard)
   const router = useRouter()
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error! {error.message}</p>
-  if (!data?.user) return
+  // if (loading) return <p>Loading...</p>
+  // if (error) return <p>Error! {error.message}</p>
+  // if (!data?.user) return
   return (
     <>
-      {data.user.name}
+      <ClientWrapperLayout>
+      {/* {data.user.name} */}
       <Button
         onClick={() => {
           router.push('/')
         }}
       >
         {dashboardT('title')}
-      </Button>
+        </Button>
+        </ClientWrapperLayout>
     </>
   )
 }
