@@ -5,7 +5,7 @@ import mouvsLogoWhite from '@/images/logo-movus-white.svg'
 import Image from 'next/image'
 import { AiFillInstagram } from 'react-icons/ai'
 import { FaApple, FaGooglePlay, FaLinkedinIn, FaTwitter } from 'react-icons/fa'
-import { footerStyle } from './style/footer.css'
+import { footerStyle } from './footer.css'
 export const Footer = () => {
   const { t: footerT, i18n } = useTranslation(NAMESPACE_OPTIONS.footer)
 
