@@ -1,5 +1,6 @@
 'use client'
 
+import { Footer } from '@/features/footer/components'
 import {
   LoginDocument,
   LoginMutation,
@@ -48,57 +49,60 @@ export const Login = () => {
   }
 
   return (
-    <Paper
-      elevation={3}
-      sx={{
-        p: 4,
-        height: '70vh',
-        margin: '60px 120px',
-      }}
-    >
-      <Grid
-        container
-        direction="column"
-        justifyContent="flex-start"
-        alignItems="center"
+    <>
+      <Paper
+        elevation={3}
+        sx={{
+          p: 4,
+          height: '70vh',
+          margin: '60px 120px',
+        }}
       >
-        <Avatar sx={{ bgcolor: teal[400] }}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography variant={'h5'} sx={{ m: '30px' }}>
-          {loginT('title')}
-        </Typography>
-      </Grid>
-      {requestError && (
-        <Alert sx={{ mb: 2 }} color="error">
-          {requestError}
-        </Alert>
-      )}
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <TextField
-          label="Username"
-          variant="standard"
-          {...register('username', { required: 'usernameは必須です' })}
-          fullWidth
-          error={errors.username?.message ? true : false}
-          helperText={errors?.username?.message}
-        />
-        <TextField
-          type="password"
-          label="Password"
-          variant="standard"
-          {...register('password', { required: 'passwordは必須です' })}
-          helperText={errors?.username?.message}
-          error={errors.username?.message ? true : false}
-          fullWidth
-          sx={{ mt: 3 }}
-        />
-        <Box mt={3}>
-          <Button type="submit" color="primary" variant="contained" fullWidth>
-            サインイン
-          </Button>
-        </Box>
-      </form>
-    </Paper>
+        <Grid
+          container
+          direction="column"
+          justifyContent="flex-start"
+          alignItems="center"
+        >
+          <Avatar sx={{ bgcolor: teal[400] }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography variant={'h5'} sx={{ m: '30px' }}>
+            {loginT('title')}
+          </Typography>
+        </Grid>
+        {requestError && (
+          <Alert sx={{ mb: 2 }} color="error">
+            {requestError}
+          </Alert>
+        )}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <TextField
+            label="Username"
+            variant="standard"
+            {...register('username', { required: 'usernameは必須です' })}
+            fullWidth
+            error={errors.username?.message ? true : false}
+            helperText={errors?.username?.message}
+          />
+          <TextField
+            type="password"
+            label="Password"
+            variant="standard"
+            {...register('password', { required: 'passwordは必須です' })}
+            helperText={errors?.username?.message}
+            error={errors.username?.message ? true : false}
+            fullWidth
+            sx={{ mt: 3 }}
+          />
+          <Box mt={3}>
+            <Button type="submit" color="primary" variant="contained" fullWidth>
+              サインイン
+            </Button>
+          </Box>
+        </form>
+      </Paper>
+      <Footer />
+    </>
   )
 }
