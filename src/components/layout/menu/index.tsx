@@ -129,9 +129,7 @@ export const Menu: React.FC<Props> = ( {isMin }: Props) => {
 
   // ツールチップ表示判定
   const isShowTooltip = (menu: Menu): boolean => {
-    if (isMin) return true
-    if (menu.subMenu.length === 0) return true
-    return false
+    return isMin && menu.subMenu.length === 0
   }
 
   return (
@@ -145,23 +143,29 @@ export const Menu: React.FC<Props> = ( {isMin }: Props) => {
             {/* メインメニュー */}
             <ListItem button onClick={() => handleClick(main, mainIndex)}>
               {isShowTooltip(main) &&
-                <ListItemIcon className={`${Style.icon}`}>
-                  <Tooltip title={main.title} arrow placement='right'>{main.icon}</Tooltip>
-                </ListItemIcon>
+                <Tooltip title={main.title} arrow placement='right'>
+                  <ListItemIcon className={`${Style.icon}`}>
+                    {main.icon}
+                  </ListItemIcon>
+                </Tooltip>
               }
               {!isShowTooltip(main) &&
                 <ListItemIcon className={`${Style.icon}`}>
-                  <PopupMenu items={createLinkList(main.subMenu)}>{main.icon}</PopupMenu>
+                  {!isMin && main.icon}
+                  {(isMin && main.subMenu.length > 0) && 
+                    <PopupMenu items={createLinkList(main.subMenu)}>
+                    {main.icon}
+                  </PopupMenu>
+                  }
                 </ListItemIcon>
               }
-              
-              {isMin && <ListItemText primary={main.title} />}
-              {(main.subMenu.length > 0 && isMin) && (
+              {!isMin && <ListItemText primary={main.title} className={Style.text} />}
+              {(main.subMenu.length > 0 && !isMin) && (
                 openSubMenu[mainIndex] ? <ExpandLess className={Style.iconSvg} /> : <ExpandMore className={Style.iconSvg} />
               )}
             </ListItem>
             {/* サブメニュー */}
-            {isMin &&
+            {!isMin &&
               <Collapse in={openSubMenu[mainIndex]} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                   {main.subMenu.map((sub: SubMenu, index: number) => (

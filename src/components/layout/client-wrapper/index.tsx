@@ -95,9 +95,9 @@ export const ClientWrapperLayout: React.FC<Props> = ({ children }: Props) => {
   // メニュー開閉フラグ
   const localStorageName = "minMenu"
   const isMinMenu = localStorage.getItem(localStorageName)
-  const [open, setOpen] = React.useState(isMinMenu !== null ? JSON.parse(isMinMenu) : true);
-  const handleDrawer = (isMin:boolean) => {
-    setOpen(isMin);
+  const [isMin, setIsMin] = React.useState(isMinMenu !== null ? JSON.parse(isMinMenu) : false);
+  const handleIsMin = (isMin:boolean) => {
+    setIsMin(isMin);
     localStorage.setItem(localStorageName, isMin.toString())
   };
 
@@ -107,12 +107,19 @@ export const ClientWrapperLayout: React.FC<Props> = ({ children }: Props) => {
       <AuthProvider>
         <SnackbarProvider>
           <div className={Style.layout}>
-            <Drawer variant="permanent" open={open}>
+            <Drawer variant="permanent" open={!isMin}>
               <DrawerHeader
-                sx={{display:'block'}}
+                sx={{
+                  display: 'block',
+                  alignItems: 'center',
+                  justifyContent: 'flex-end',
+                  // padding: theme.spacing(0, 1),
+                  // necessary for content to be below app bar
+                  // ...theme.mixins.toolbar,
+                }}
               >
                 {/* ロゴ */}
-                {open && 
+                {!isMin && 
                   <div className={Style.logo}>
                     <Image src={mouvsLogo} width={144} height={23} alt="movus" />
                   </div>
@@ -121,11 +128,11 @@ export const ClientWrapperLayout: React.FC<Props> = ({ children }: Props) => {
                 <IconButton
                   color="inherit"
                   aria-label="open drawer"
-                  onClick={() => handleDrawer(true)}
+                  onClick={() => handleIsMin(false)}
                   edge="start"
                   sx={{
                     margin: '15px auto 43px',
-                    ...(open && { display: 'none' }),
+                    ...(!isMin && { display: 'none' }),
                   }}
                 >
                   <MenuIcon />
@@ -134,20 +141,20 @@ export const ClientWrapperLayout: React.FC<Props> = ({ children }: Props) => {
                 <IconButton
                   color="inherit"
                   aria-label="open drawer"
-                  onClick={() => handleDrawer(false)}
+                  onClick={() => handleIsMin(true)}
                   edge="start"
                   sx={{
                     position: 'absolute',
                     top: 0,
                     right: 0,
-                    ...(!open && { display: 'none' }),
+                    ...(isMin && { display: 'none' }),
                   }}
                 >
                   <CancelIcon />
                 </IconButton>
               </DrawerHeader>
               {/* メニュー */}
-              <Menu isMin={open}/>
+              <Menu isMin={isMin}/>
             </Drawer>
             <div className={Style.main}>
               <div className={`${Style.account} ${isFixedNav ? Style.accountFixed : ''} `}>
