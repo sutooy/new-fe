@@ -7,7 +7,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import GroupsIcon from '@mui/icons-material/Groups';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { PopupMenu, PopupMenuItem } from '@/components/shared/popup-menu/index';
 import { Tooltips } from '@/components/shared/tooltip/index';
@@ -123,14 +123,6 @@ const createLinkList = (subMenu: SubMenu[]): PopupMenuItem[] => {
 
 export const Menu: React.FC<Props> = ( {isMin }: Props) => {
   const router = useRouter();
-  
-  // i18nの言語推定の反映を待ち、hydration errorを避ける
-  const [initialRenderComplete, setInitialRenderComplete] =
-    useState<boolean>(false)
-
-  useEffect(() => {
-    setInitialRenderComplete(true)
-  }, [])
 
   const classes = useStyles();
   
