@@ -5,11 +5,11 @@ import { useTranslation } from '@/i18n/client';
 import { NAMESPACE_OPTIONS } from '@/i18n/settings';
 import Collapse from '@material-ui/core/Collapse';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
-import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import GroupsIcon from '@mui/icons-material/Groups';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { TFunction } from 'i18next';
 import { useRouter } from 'next/dist/client/components/navigation';
@@ -34,31 +34,18 @@ type Menu = {
   subMenu: SubMenu[],
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      width: '100%',
-      maxWidth: 360,
-      backgroundColor: theme.palette.background.paper,
-    },
-    nested: {
-      paddingLeft: theme.spacing(4),
-    },
-  }),
-);
-
 // ポップアップメニュー用にリンク情報を詰めなおす
 const createLinkList = (subMenu: SubMenu[]): PopupMenuItem[] => {
-  const linList: PopupMenuItem[] = []
+  const linkList: PopupMenuItem[] = []
   for (const item of subMenu) {
     if (!item.disabled){
-      linList.push({
+      linkList.push({
         linkText: item.title,
         path: item.path
       })
     }
   }
-  return linList
+  return linkList
 }
 
 // i18nでのメニュー作成
@@ -67,7 +54,7 @@ const createMenu = (menuT: TFunction<string | readonly string[], "metadata">) =>
     {
       title: menuT("homepage.mainMenu"),
       path: "/main-menu",
-      icon: <DashboardIcon className={Style.iconSvg}/>,
+      icon: <HomeOutlinedIcon className={Style.iconSvg}/>,
       disabled: false,
       subMenu: [],
     },
@@ -124,13 +111,12 @@ const createMenu = (menuT: TFunction<string | readonly string[], "metadata">) =>
 export const Menu: React.FC<Props> = ( {isMin }: Props) => {
   const router = useRouter();
 
-  const classes = useStyles();
-
+  // メニューリスト
   const { t: menuT } = useTranslation(NAMESPACE_OPTIONS.menu)
   const menuList = createMenu(menuT)
   
+  // サブメニュー開閉
   const [openSubMenu, setOpenSubMenu] = useState<boolean[]>(new Array<boolean>(Menu.length).fill(false));
-
   const handleClick = (item: Menu, index: number) => {
     if (item.path) {
       router.push(item.path)
@@ -159,13 +145,12 @@ export const Menu: React.FC<Props> = ( {isMin }: Props) => {
             {/* メインメニュー */}
             <ListItem button onClick={() => handleClick(main, mainIndex)}>
               {isShowTooltip(main) &&
-                <ListItemIcon className={`${Style.icon} ${!isMin && Style.minIcon}`}>
-                
+                <ListItemIcon className={`${Style.icon}`}>
                   <Tooltips text={main.title} position="left" dom={main.icon} />
                 </ListItemIcon>
               }
               {!isShowTooltip(main) &&
-                <ListItemIcon className={`${Style.icon} ${!isMin && Style.minIcon}`}>
+                <ListItemIcon className={`${Style.icon}`}>
                   <PopupMenu items={createLinkList(main.subMenu)}>{main.icon}</PopupMenu>
                 </ListItemIcon>
               }
@@ -180,7 +165,17 @@ export const Menu: React.FC<Props> = ( {isMin }: Props) => {
               <Collapse in={openSubMenu[mainIndex]} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                   {main.subMenu.map((sub: SubMenu, index: number) => (
-                    <ListItem key={sub.title} button className={classes.nested}>
+                    <ListItem
+                      key={sub.title}
+                      button
+                      sx={{
+                        "&.MuiListItem-root": {
+                          width: '100%',
+                          maxWidth: 360,
+                          paddingLeft: "46px"
+                        }
+                      }}
+                    >
                       <ListItemText primary={sub.title} />
                     </ListItem>
                   ))}

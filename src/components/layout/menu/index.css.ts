@@ -8,15 +8,13 @@ export const Style = {
   }),
 
   icon: style({
-    minWidth: '30px!important',
+    minWidth: '18px!important',
     margin: '0 auto',
   }),
 
-  minIcon: style({
-    minWidth: '10px!important',
-  }),
   iconSvg: style({
     fontSize: '18px!important',
     color: 'rgba(0,0,0,.8)',
+    margin: '0 auto',
   }),
 }
