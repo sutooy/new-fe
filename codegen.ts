@@ -2,8 +2,10 @@ import { CodegenConfig } from '@graphql-codegen/cli'
 
 const BFF_URL =
   process.env.NODE_ENV === 'production'
-    ? 'https://stg-admin-bff.mo-vus.com/graphql'
-    : 'https://stg-admin-bff.mo-vus.com/graphql'
+    ? 'https://admin-bff.mo-vus.com/graphql'
+    : process.env.ENVIRONMENT
+      ? 'https://stg-admin-bff.mo-vus.com/graphql'
+      : 'http://localhost:65535/graphql'
 
 const config: CodegenConfig = {
   schema: [

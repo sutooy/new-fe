@@ -9,8 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'",
-    "schema": "graphql-codegen --config codegen.ts",
-    "copy:schema": "mkdir -p dist/src/generated && cp src/generated dist/src/generated/*"
+    "schema": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
     "@apollo/client": "^3.8.8",
