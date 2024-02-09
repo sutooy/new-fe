@@ -3,6 +3,7 @@ steps:
     name: 'gcr.io/kaniko-project/executor:latest'
     args:
       - --dockerfile=Dockerfile
+      - --destination=asia.gcr.io/$PROJECT_ID/operation-frontend:$COMMIT_SHA
       - --destination=asia.gcr.io/$PROJECT_ID/operation-frontend:latest
       - --build-arg=COMMIT_SHA=$COMMIT_SHA
       - --build-arg=ENVIRONMENT=$_ENVIRONMENT
