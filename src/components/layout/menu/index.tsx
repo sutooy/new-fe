@@ -1,8 +1,8 @@
 'use client'
 import { PopupMenu, PopupMenuItem } from '@/components/shared/popup-menu/index';
-import { Tooltips } from '@/components/shared/tooltip/index';
 import { useTranslation } from '@/i18n/client';
 import { NAMESPACE_OPTIONS } from '@/i18n/settings';
+import { Tooltip } from '@material-ui/core';
 import Collapse from '@material-ui/core/Collapse';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import ExpandLess from '@material-ui/icons/ExpandLess';
@@ -146,7 +146,7 @@ export const Menu: React.FC<Props> = ( {isMin }: Props) => {
             <ListItem button onClick={() => handleClick(main, mainIndex)}>
               {isShowTooltip(main) &&
                 <ListItemIcon className={`${Style.icon}`}>
-                  <Tooltips text={main.title} position="left" dom={main.icon} />
+                  <Tooltip title={main.title} arrow placement='right'>{main.icon}</Tooltip>
                 </ListItemIcon>
               }
               {!isShowTooltip(main) &&
