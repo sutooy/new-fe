@@ -12,6 +12,9 @@ export const Style = {
 }
 
 export const DialogStyle = {
+  header: style({
+    borderBottom: '1px solid rgba(5, 5, 5, 0.06)',
+  }),
   muiDialogContainer: {
     justifyContent: 'flex-end',
   },
@@ -21,6 +24,10 @@ export const DialogStyle = {
     borderRadius: 0,
     height: '100%',
     maxHeight: '100Vh',
-    padding: '24px',
+    width: 'auto',
   },
+
+  dialogActions: style({
+    justifyContent: 'flex-start',
+  }),
 }

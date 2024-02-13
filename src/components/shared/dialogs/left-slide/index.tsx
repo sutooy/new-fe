@@ -1,9 +1,11 @@
 'use client'
+import CloseIcon from '@mui/icons-material/Close'
 import {
   Button,
   Dialog,
   DialogActions,
   DialogContent,
+  IconButton,
   Slide,
 } from '@mui/material'
 import { TransitionProps } from '@mui/material/transitions'
@@ -18,7 +20,12 @@ type Props = {
   closeCallBack: () => void
   // 閉じるボタンテキスト
   closeBtnText?: string
+  // 横幅
+  width?: string
 }
+
+// 横幅デフォルト
+const defaultWidth = '525px'
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -34,7 +41,9 @@ export const LeftSlideDialog: React.FC<Props> = ({
   isOpen,
   closeCallBack,
   closeBtnText,
+  width,
 }: Props) => {
+  DialogStyle.muiPaperRoot.width = width ? `${width}px` : defaultWidth
   return (
     <Dialog
       open={isOpen}
@@ -47,8 +56,19 @@ export const LeftSlideDialog: React.FC<Props> = ({
         '& .MuiPaper-root': DialogStyle.muiPaperRoot,
       }}
     >
+      <div className={DialogStyle.header}>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          onClick={closeCallBack}
+          edge="start"
+          sx={{ marginLeft: 0 }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </div>
       <DialogContent>{children}</DialogContent>
-      <DialogActions>
+      <DialogActions sx={{ justifyContent: 'flex-start' }}>
         <Button
           variant="outlined"
           color="error"
