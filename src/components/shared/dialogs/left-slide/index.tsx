@@ -1,5 +1,11 @@
 'use client'
-import { Button, Dialog, Slide } from '@mui/material'
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  Slide,
+} from '@mui/material'
 import { TransitionProps } from '@mui/material/transitions'
 import React from 'react'
 import { DialogStyle, Style } from './index.css'
@@ -23,7 +29,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="left" ref={ref} {...props} />
 })
 
-export const LeftSlide: React.FC<Props> = ({
+export const LeftSlideDialog: React.FC<Props> = ({
   children,
   isOpen,
   closeCallBack,
@@ -34,22 +40,24 @@ export const LeftSlide: React.FC<Props> = ({
       open={isOpen}
       TransitionComponent={Transition}
       keepMounted
-      onClick={closeCallBack}
+      onClose={closeCallBack}
       aria-describedby="alert-dialog-slide-description"
       sx={{
         '& .MuiDialog-container': DialogStyle.muiDialogContainer,
         '& .MuiPaper-root': DialogStyle.muiPaperRoot,
       }}
     >
-      {children}
-      <Button
-        variant="outlined"
-        color="error"
-        className={Style.closeBtn}
-        onClick={closeCallBack}
-      >
-        {closeBtnText ? closeBtnText : 'Cancel'}
-      </Button>
+      <DialogContent>{children}</DialogContent>
+      <DialogActions>
+        <Button
+          variant="outlined"
+          color="error"
+          className={Style.closeBtn}
+          onClick={closeCallBack}
+        >
+          {closeBtnText ? closeBtnText : 'Cancel'}
+        </Button>
+      </DialogActions>
     </Dialog>
   )
 }
