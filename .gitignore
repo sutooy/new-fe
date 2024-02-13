@@ -36,3 +36,6 @@ gatsby-types.d.ts
 # next
 .next
 
+
+# Sentry Config File
+.sentryclirc
