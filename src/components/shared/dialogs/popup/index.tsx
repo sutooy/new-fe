@@ -8,7 +8,6 @@ import {
   DialogTitle,
 } from '@mui/material'
 import React from 'react'
-import { DialogStyle } from './index.css'
 
 type Props = {
   children: React.ReactNode
@@ -24,7 +23,12 @@ type Props = {
   cancelBtnText?: string
   // タイトル
   title?: string
+  // 横幅
+  width?: string
 }
+
+// 横幅デフォルト
+const defaultWidth = '600px'
 
 export const PopupDialog: React.FC<Props> = ({
   children,
@@ -34,6 +38,7 @@ export const PopupDialog: React.FC<Props> = ({
   okBtnText,
   cancelBtnText,
   title,
+  width,
 }: Props) => {
   return (
     <Dialog
@@ -41,8 +46,10 @@ export const PopupDialog: React.FC<Props> = ({
       onClose={cancelCallBack}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
-      PaperProps={{
-        className: DialogStyle.muiPaperRoot,
+      sx={{
+        '& .MuiPaper-root': {
+          width: width ? `${width}px` : defaultWidth,
+        },
       }}
     >
       {/* タイトル */}
