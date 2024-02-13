@@ -26,7 +26,11 @@ export const LoginIndexBackground = () => {
     })
   }, [])
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="255 -50 1600 625">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="255 -50 1600 625"
+      className={loginIndexBackgroundStyle.svg}
+    >
       <defs></defs>
       <title></title>
       <g id="planet">

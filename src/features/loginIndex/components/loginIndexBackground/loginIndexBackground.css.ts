@@ -64,4 +64,11 @@ export const loginIndexBackgroundStyle = {
   cls9: style({
     fill: '#4b3952',
   }),
+  svg: style({
+    position: 'absolute',
+    right: 0,
+    width: '100%',
+    height: 'auto',
+    top: '230px',
+  }),
 }
