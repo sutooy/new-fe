@@ -22,6 +22,8 @@ type Props = {
   closeBtnText?: string
   // 横幅
   width?: string
+  // キャンセルボタン非表示
+  isHideCancelBtn?: boolean
 }
 
 // 横幅デフォルト
@@ -42,6 +44,7 @@ export const LeftSlideDialog: React.FC<Props> = ({
   closeCallBack,
   closeBtnText,
   width,
+  isHideCancelBtn,
 }: Props) => {
   DialogStyle.muiPaperRoot.width = width ? `${width}px` : defaultWidth
   return (
@@ -68,16 +71,18 @@ export const LeftSlideDialog: React.FC<Props> = ({
         </IconButton>
       </div>
       <DialogContent>{children}</DialogContent>
-      <DialogActions sx={{ justifyContent: 'flex-start' }}>
-        <Button
-          variant="outlined"
-          color="error"
-          className={Style.closeBtn}
-          onClick={closeCallBack}
-        >
-          {closeBtnText ? closeBtnText : 'Cancel'}
-        </Button>
-      </DialogActions>
+      {!isHideCancelBtn && (
+        <DialogActions sx={{ justifyContent: 'flex-start' }}>
+          <Button
+            variant="outlined"
+            color="error"
+            className={Style.closeBtn}
+            onClick={closeCallBack}
+          >
+            {closeBtnText ? closeBtnText : 'Cancel'}
+          </Button>
+        </DialogActions>
+      )}
     </Dialog>
   )
 }
