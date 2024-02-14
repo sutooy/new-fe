@@ -9,7 +9,6 @@ import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import GroupsIcon from '@mui/icons-material/Groups'
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material'
 import { TFunction } from 'i18next'
 import { useRouter } from 'next/dist/client/components/navigation'
@@ -53,13 +52,6 @@ const createMenu = (
   menuT: TFunction<string | readonly string[], 'metadata'>
 ) => {
   return [
-    {
-      title: menuT('homepage.mainMenu'),
-      path: '/',
-      icon: <HomeOutlinedIcon className={Style.iconSvg} />,
-      disabled: false,
-      subMenu: [],
-    },
     {
       title: menuT('dashboard.mainMenu'),
       path: '/dashboard',
