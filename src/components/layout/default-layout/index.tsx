@@ -55,69 +55,69 @@ export const DefaultLayout: React.FC<Props> = ({ children }: Props) => {
 
   if (!initialRenderComplete) return <></>
   return (
-    <SnackbarProvider>
-      <div className={Style.layout}>
-        <MuiDrawer
-          variant="permanent"
-          className={`${Mui.drawer}  ${
-            isMin ? Mui.closedMixin : Mui.openedMixin
-          }`}
-          open={!isMin}
-        >
-          <div className={Mui.drawerHeader}>
-            {/* ロゴ */}
-            {!isMin && (
-              <div className={Style.logo}>
-                <Image src={mouvsLogo} width={144} height={23} alt="movus" />
-              </div>
-            )}
-            {/* 開く */}
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={() => handleIsMin(false)}
-              edge="start"
-              sx={{
-                margin: '15px auto 43px',
-                ...(!isMin && { display: 'none' }),
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            {/* 閉じる */}
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={() => handleIsMin(true)}
-              edge="start"
-              sx={{
-                position: 'absolute',
-                top: 20,
-                right: 10,
-                ...(isMin && { display: 'none' }),
-              }}
-            >
-              <CancelIcon />
-            </IconButton>
-          </div>
-          {/* メニュー */}
-          <Menu isMin={isMin} />
-        </MuiDrawer>
-        {/* アカウント todo コンポーネント切り出す */}
-        <div className={Style.main}>
-          <div
-            className={`${Style.account} ${
-              isFixedNav ? Style.accountFixed : ''
-            } `}
+    <ApploClientProvider>
+      <SnackbarProvider>
+        <div className={Style.layout}>
+          <MuiDrawer
+            variant="permanent"
+            className={`${Mui.drawer}  ${
+              isMin ? Mui.closedMixin : Mui.openedMixin
+            }`}
+            open={!isMin}
           >
-            アカウント
-          </div>
-          {/* メインコンテンツ */}
-          <div className={Style.mainContent}>
-            <ApploClientProvider>{children}</ApploClientProvider>
+            <div className={Mui.drawerHeader}>
+              {/* ロゴ */}
+              {!isMin && (
+                <div className={Style.logo}>
+                  <Image src={mouvsLogo} width={144} height={23} alt="movus" />
+                </div>
+              )}
+              {/* 開く */}
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={() => handleIsMin(false)}
+                edge="start"
+                sx={{
+                  margin: '15px auto 43px',
+                  ...(!isMin && { display: 'none' }),
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+              {/* 閉じる */}
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={() => handleIsMin(true)}
+                edge="start"
+                sx={{
+                  position: 'absolute',
+                  top: 20,
+                  right: 10,
+                  ...(isMin && { display: 'none' }),
+                }}
+              >
+                <CancelIcon />
+              </IconButton>
+            </div>
+            {/* メニュー */}
+            <Menu isMin={isMin} />
+          </MuiDrawer>
+          {/* アカウント todo コンポーネント切り出す */}
+          <div className={Style.main}>
+            <div
+              className={`${Style.account} ${
+                isFixedNav ? Style.accountFixed : ''
+              } `}
+            >
+              アカウント
+            </div>
+            {/* メインコンテンツ */}
+            <div className={Style.mainContent}>{children}</div>
           </div>
         </div>
-      </div>
-    </SnackbarProvider>
+      </SnackbarProvider>
+    </ApploClientProvider>
   )
 }
