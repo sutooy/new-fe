@@ -9,7 +9,7 @@ import MuiDrawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
-import { Mui, Style } from './index.css'
+import { Drawer, Style } from './index.css'
 
 type Props = {
   children: React.ReactNode
@@ -60,12 +60,15 @@ export const DefaultLayout: React.FC<Props> = ({ children }: Props) => {
         <div className={Style.layout}>
           <MuiDrawer
             variant="permanent"
-            className={`${Mui.drawer}  ${
-              isMin ? Mui.closedMixin : Mui.openedMixin
+            className={`${Drawer.drawer}  ${
+              isMin ? Drawer.closedMixin : Drawer.openedMixin
             }`}
             open={!isMin}
+            classes={{
+              paper: !isMin ? Drawer.muiPaperRoot : '',
+            }}
           >
-            <div className={Mui.drawerHeader}>
+            <div className={Drawer.drawerHeader}>
               {/* ロゴ */}
               {!isMin && (
                 <div className={Style.logo}>

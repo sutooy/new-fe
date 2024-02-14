@@ -1,6 +1,7 @@
 'use client'
 
 import { ClientWrapperLayout } from '@/components/layout/client-wrapper'
+import { H1Header } from '@/components/shared/h1-header'
 import { GetUserDocument, GetUserQuery } from '@/generated/graphql'
 import { useTranslation } from '@/i18n/client'
 import { NAMESPACE_OPTIONS } from '@/i18n/settings'
@@ -23,15 +24,19 @@ export const Dashboard = () => {
   return (
     <>
       <ClientWrapperLayout>
-      {/* {data.user.name} */}
-      <Button
-        onClick={() => {
-          router.push('/')
-        }}
-      >
-        {dashboardT('title')}
+        <H1Header
+          title="タイトル"
+          subText="subテキストsubテキストsubテキストsubテキストsubテキストsubテキストsubテキストsubテキストsubテキストsubテキスト"
+        />
+        {/* {data.user.name} */}
+        <Button
+          onClick={() => {
+            router.push('/')
+          }}
+        >
+          {dashboardT('title')}
         </Button>
-        </ClientWrapperLayout>
+      </ClientWrapperLayout>
     </>
   )
 }

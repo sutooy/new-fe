@@ -48,15 +48,19 @@ export const Style = {
 const drawerWidth = 240
 const theme = createTheme()
 
-export const Mui = {
+export const Drawer = {
   drawer: style({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
   }),
+  muiPaperRoot: style({
+    width: drawerWidth,
+  }),
   openedMixin: style({
     width: drawerWidth,
+    minWidth: drawerWidth,
     overflowX: 'hidden',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
