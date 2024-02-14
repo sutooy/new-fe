@@ -108,7 +108,7 @@ export const Menu: React.FC<Props> = ({ isMin }: Props) => {
   const router = useRouter()
 
   // メニューリスト
-  const { t: menuT } = useTranslation(NAMESPACE_OPTIONS.menu)
+  const { t: menuT } = useTranslation(NAMESPACE_OPTIONS.systemMenu)
   const menuList = createMenu(menuT)
 
   // サブメニュー開閉フラグ
