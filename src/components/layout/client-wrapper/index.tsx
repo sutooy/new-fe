@@ -1,7 +1,7 @@
 'use client'
 import { AuthProvider } from '@/contexts/authContext'
 import { ThemeProvider } from '@/contexts/themeContext'
-import { DefaultLayout } from '../dfault-layout'
+import { DefaultLayout } from '../default-layout'
 
 type Props = {
   children: React.ReactNode
