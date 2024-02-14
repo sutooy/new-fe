@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn clean:dist && yarn clean:next && next build",
+    "clean:dist": "rimraf src/**/dist",
+    "clean:next": "rimraf .next out",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'",
