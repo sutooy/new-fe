@@ -34,13 +34,4 @@ export const Style = {
     fontWeight: 700,
     textAlign: 'right',
   }),
-
-  imgBox: style({
-    borderRadius: '50%',
-    boxShadow: '2px 2px 5px rgba(0,0,0,.3)',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }),
 }
