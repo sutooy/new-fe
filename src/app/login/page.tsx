@@ -1,4 +1,4 @@
-import { LoginIndex } from '@/features/loginIndex'
+import { Login } from '@/features/login'
 import { getTranslation } from '@/i18n'
 import {
   DEFAULT_NS,
@@ -19,5 +19,5 @@ export async function generateMetadata({
 }
 
 export default function Page() {
-  return <LoginIndex></LoginIndex>
+  return <Login></Login>
 }
