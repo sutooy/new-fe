@@ -2,14 +2,16 @@
 import { PopupMenu, PopupMenuItem } from '@/components/shared/popup-menu/index'
 import { useTranslation } from '@/i18n/client'
 import { NAMESPACE_OPTIONS } from '@/i18n/settings'
-import { Tooltip } from '@material-ui/core'
-import Collapse from '@material-ui/core/Collapse'
-import { SvgIconProps } from '@material-ui/core/SvgIcon'
-import ExpandLess from '@material-ui/icons/ExpandLess'
-import ExpandMore from '@material-ui/icons/ExpandMore'
-import DashboardIcon from '@mui/icons-material/Dashboard'
-import GroupsIcon from '@mui/icons-material/Groups'
-import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material'
+import { Dashboard, ExpandLess, ExpandMore, Groups } from '@mui/icons-material'
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  SvgIconProps,
+} from '@mui/material'
+import Collapse from '@mui/material/Collapse'
+import Tooltip from '@mui/material/Tooltip'
 import { TFunction } from 'i18next'
 import { useRouter } from 'next/dist/client/components/navigation'
 import React, { useState } from 'react'
@@ -55,13 +57,13 @@ const createMenu = (
     {
       title: menuT('dashboard.mainMenu'),
       path: '/dashboard',
-      icon: <DashboardIcon className={Style.iconSvg} />,
+      icon: <Dashboard className={Style.iconSvg} />,
       disabled: false,
       subMenu: [],
     },
     {
       title: menuT('customer.mainMenu'),
-      icon: <GroupsIcon className={Style.iconSvg} />,
+      icon: <Groups className={Style.iconSvg} />,
       disabled: false,
       subMenu: [
         {
@@ -78,13 +80,13 @@ const createMenu = (
     },
     {
       title: menuT('bookingManagement.mainMenu'),
-      icon: <GroupsIcon className={Style.iconSvg} />,
+      icon: <Groups className={Style.iconSvg} />,
       disabled: false,
       subMenu: [],
     },
     {
       title: menuT('vehicleManagement.mainMenu'),
-      icon: <GroupsIcon className={Style.iconSvg} />,
+      icon: <Groups className={Style.iconSvg} />,
       disabled: false,
       subMenu: [
         {
