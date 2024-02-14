@@ -37,7 +37,12 @@ export const DefaultLayout: React.FC<Props> = ({ children }: Props) => {
 
   // メニュー開閉フラグ
   const localStorageName = 'minMenu'
-  const isMinMenu = localStorage.getItem(localStorageName)
+  let isMinMenu = null
+
+  if (typeof window !== 'undefined') {
+    isMinMenu = localStorage.getItem(localStorageName)
+  }
+
   const [isMin, setIsMin] = React.useState(
     isMinMenu !== null ? JSON.parse(isMinMenu) : false
   )
