@@ -8,7 +8,7 @@ type Props = {
   property?: any
 }
 
-export const FloatingAccount: React.FC<Props> = ({ property }: Props) => {
+export const FloatingProfile: React.FC<Props> = ({ property }: Props) => {
   // 追従フラグ
   const [isFixedNav, serIsFixedNav] = useState(false)
 

@@ -9,7 +9,7 @@ import MuiDrawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
-import { FloatingAccount } from '../floating-account'
+import { FloatingProfile } from '../floating-profile'
 import { Drawer, Style } from './index.css'
 
 type Props = {
@@ -99,7 +99,7 @@ export const DefaultLayout: React.FC<Props> = ({ children }: Props) => {
           </MuiDrawer>
           <div className={Style.main}>
             {/* フローティングアカウント */}
-            <FloatingAccount />
+            <FloatingProfile />
             {/* メインコンテンツ */}
             <div className={Style.mainContent}>{children}</div>
           </div>
