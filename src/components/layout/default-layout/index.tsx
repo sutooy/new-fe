@@ -9,6 +9,7 @@ import MuiDrawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
+import { FloatingAccount } from '../floating-account'
 import { Drawer, Style } from './index.css'
 
 type Props = {
@@ -22,17 +23,6 @@ export const DefaultLayout: React.FC<Props> = ({ children }: Props) => {
 
   useEffect(() => {
     setInitialRenderComplete(true)
-  }, [])
-
-  const [isFixedNav, serIsFixedNav] = useState(false)
-
-  const windowScroll = () => {
-    serIsFixedNav(window.scrollY > 50)
-  }
-  // アカウントの追従バー
-  useEffect(() => {
-    window.addEventListener('scroll', windowScroll)
-    return () => window.removeEventListener('scroll', windowScroll)
   }, [])
 
   // メニュー開閉フラグ
@@ -107,15 +97,9 @@ export const DefaultLayout: React.FC<Props> = ({ children }: Props) => {
             {/* メニュー */}
             <Menu isMin={isMin} />
           </MuiDrawer>
-          {/* アカウント todo コンポーネント切り出す */}
           <div className={Style.main}>
-            <div
-              className={`${Style.account} ${
-                isFixedNav ? Style.accountFixed : ''
-              } `}
-            >
-              アカウント
-            </div>
+            {/* フローティングアカウント */}
+            <FloatingAccount />
             {/* メインコンテンツ */}
             <div className={Style.mainContent}>{children}</div>
           </div>
