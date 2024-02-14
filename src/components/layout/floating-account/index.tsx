@@ -2,6 +2,7 @@
 import DefaultProfileIcon from '@/images/icon/default-profile.png'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
+import { Notifications } from '../notifications'
 import { Style } from './index.css'
 type Props = {
   // todo アカウント情報
@@ -28,8 +29,11 @@ export const FloatingAccount: React.FC<Props> = ({ property }: Props) => {
     <div
       className={`${Style.account} ${isFixedNav ? Style.accountFixed : ''} `}
     >
+      {/* お知らせ */}
+      <Notifications />
+      {/* プロフィール */}
       <div>
-        <div className={Style.userName}>taka</div>
+        <div className={Style.userName}>Takayuki Miwa</div>
         <div className={Style.role}>admin</div>
       </div>
       <div className={Style.imgBox}>
