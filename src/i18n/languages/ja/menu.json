@@ -1,91 +1,88 @@
 {
-  "homepage": {
-    "mainMenu": "Homepage"
-  },
   "dashboard": {
-    "mainMenu": "Dashboard"
+    "mainMenu": "ダッシュボード"
   },
   "customer": {
-    "mainMenu": "Customer",
+    "mainMenu": "顧客",
     "subMenu": {
-      "customer": "Customer",
-      "application": "Application"
+      "customer": "顧客",
+      "application": "アプリケーション"
     }
   },
   "bookingManagement": {
-    "mainMenu": "Booking Management"
+    "mainMenu": "予約管理"
   },
   "vehicleManagement": {
-    "mainMenu": "Vehicle Management",
+    "mainMenu": "車両管理",
     "subMenu": {
-      "vehicleManagement": "Vehicle Management",
-      "wirelessGPSList": "Wireless GPS List"
+      "vehicleManagement": "車両管理",
+      "wirelessGPSList": "ワイヤレスGPSリスト"
     }
   },
   "carMaintenance": {
-    "mainMenu": "Car Maintenance",
+    "mainMenu": "カーメンテナンス",
     "subMenu": {
-      "vehicleManagement": "Regular Maintenance",
-      "carStock": "Car Stock",
-      "maintenanceItem": "Maintenance Item",
-      "workshop": "Workshop"
+      "vehicleManagement": "定期メンテナンス",
+      "carStock": "車両在庫",
+      "maintenanceItem": "メンテナンス項目",
+      "workshop": "ワークショップ"
     }
   },
   "CSManagement": {
-    "mainMenu": "CS Management",
+    "mainMenu": "CS管理",
     "subMenu": {
       "STNK": "STNK",
-      "Insurance": "Insurance",
-      "turnOffCar": "Turn off Car"
+      "Insurance": "保険",
+      "turnOffCar": "車両返却"
     }
   },
   "collectionManagement": {
-    "mainMenu": "Collection Management",
+    "mainMenu": "コレクション管理",
     "subMenu": {
-      "collection": "Collection",
-      "engineOff": "Engine Off",
-      "carAtWorkshop": "Car at Workshop",
-      "customerTermination": "Customer Termination"
+      "collection": "コレクション",
+      "engineOff": "エンジンオフ",
+      "carAtWorkshop": "ワークショップに車",
+      "customerTermination": "顧客の終了"
     }
   },
   "salesPipeline": {
-    "mainMenu": "Sales Pipeline",
+    "mainMenu": "セールスパイプライン",
     "subMenu": {
-      "salesOverview": "Sales Overview",
-      "customerPipeline": "Customer Pipeline",
-      "salesLeads": "Sales Leads",
-      "lostCustomer": "Lost Customer",
-      "creditCheck": "Credit Check",
-      "surveyor": "Surveyor",
-      "agent": "Agent"
+      "salesOverview": "営業概要",
+      "customerPipeline": "顧客パイプライン",
+      "salesLeads": "セールス・リード",
+      "lostCustomer": "失客",
+      "creditCheck": "信用調査",
+      "surveyor": "調査員",
+      "agent": "エージェント"
     }
   },
   "vehicleMonitoring": {
-    "mainMenu": "Vehicle Monitoring"
+    "mainMenu": "車両監視"
   },
   "contentManagement": {
-    "mainMenu": "Content Management"
+    "mainMenu": "コンテンツ管理"
   },
   "adminUser": {
-    "mainMenu": "Admin User",
+    "mainMenu": "管理者",
     "subMenu": {
-      "user": "User",
-      "userRole": "User Role",
-      "customerPipeline": "Customer Pipeline",
-      "salesLeads": "Sales Leads",
-      "lostCustomer": "Lost Customer",
-      "creditCheck": "Credit Check",
-      "surveyor": "Surveyor",
-      "agent": "Agent"
+      "user": "ユーザー",
+      "userRole": "ユーザーロール",
+      "customerPipeline": "顧客パイプライン",
+      "salesLeads": "セールスリード",
+      "lostCustomer": "失客",
+      "creditCheck": "信用調査",
+      "surveyor": "調査員",
+      "agent": "エージェント"
     }
   },
   "userDetail": {
-    "mainMenu": "User Detail"
+    "mainMenu": "ユーザー詳細"
   },
   "logActivity": {
-    "mainMenu": "Log Activity"
+    "mainMenu": "ログアクティビティ"
   },
   "CustomerData": {
-    "mainMenu": "Customer Data"
+    "mainMenu": "顧客データ"
   }
 }
