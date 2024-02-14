@@ -1,13 +1,12 @@
-import ApploClientProvider from '@/contexts/apolloContext';
-import { getTranslation } from '@/i18n';
+import ApploClientProvider from '@/contexts/apolloContext'
+import { getTranslation } from '@/i18n'
 import {
   DEFAULT_NS,
   KEY_PREFIX_OPTIONS,
   LANGUAGE_OPTIONS,
-} from '@/i18n/settings';
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
-import { Inter } from 'next/font/google';
-
+} from '@/i18n/settings'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
+import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -35,7 +34,6 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ApploClientProvider>{children}</ApploClientProvider>
         </AppRouterCacheProvider>
-        
       </body>
     </html>
   )
