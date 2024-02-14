@@ -10,3 +10,20 @@ export const Style = {
     justifyContent: 'center',
   }),
 }
+
+export const MenuStyle = {
+  menuItem: style({
+    color: '#e60112!important',
+    fontSize: '14px!important',
+    selectors: {
+      '&:hover': {
+        backgroundColor: '#e60112!important',
+        color: '#fff!important',
+      },
+    },
+  }),
+  menu: style({
+    borderRadius: '8px!important',
+    padding: '4px!important',
+  }),
+}

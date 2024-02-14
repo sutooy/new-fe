@@ -3,11 +3,11 @@ import { useTranslation } from '@/i18n/client'
 import { NAMESPACE_OPTIONS } from '@/i18n/settings'
 import DefaultProfileIcon from '@/images/icon/default-profile.png'
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew'
-import { ListItemIcon, Menu, MenuItem, SvgIconProps } from '@mui/material'
+import { Menu, MenuItem, SvgIconProps } from '@mui/material'
 import { TFunction } from 'i18next'
 import Image from 'next/image'
 import React from 'react'
-import { Style } from './index.css'
+import { MenuStyle, Style } from './index.css'
 
 type Menu = {
   title: string
@@ -29,7 +29,7 @@ export const ProfileMenu: React.FC = () => {
   const handleCloseMenu = (closeAction?: () => void) => {
     setAnchorEl(null)
     if (closeAction) {
-      closeAction
+      closeAction()
     }
   }
 
@@ -77,16 +77,25 @@ export const ProfileMenu: React.FC = () => {
         onClick={() => handleCloseMenu()}
         PaperProps={{
           elevation: 0,
+          className: MenuStyle.menu,
           sx: {
             overflow: 'visible',
             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
             mt: 1.5,
-            '& .MuiAvatar-root': {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
+            '& .MuiList-root': {
+              padding: 0,
             },
+            '& .MuiButtonBase-root': {
+              borderRadius: '4px',
+              padding: '5px 12px',
+              display: 'flex',
+              gap: '5px',
+            },
+            '& .MuiSvgIcon-root': {
+              fontSize: '18px',
+              fontWeight: 'bold',
+            },
+
             '&::before': {
               content: '""',
               display: 'block',
@@ -105,8 +114,11 @@ export const ProfileMenu: React.FC = () => {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         {menuList.map((menu: Menu) => (
-          <MenuItem onClick={() => handleCloseMenu(menu.action)}>
-            <ListItemIcon>{menu.icon}</ListItemIcon>
+          <MenuItem
+            onClick={() => handleCloseMenu(menu.action)}
+            className={MenuStyle.menuItem}
+          >
+            {menu.icon}
             {menu.title}
           </MenuItem>
         ))}
