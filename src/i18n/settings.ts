@@ -29,7 +29,6 @@ export const NAMESPACE_OPTIONS = {
   common: 'common',
   login: 'login',
   dashboard: 'dashboard',
-  footer: 'footer',
 } as const
 export const DEFAULT_NS = NAMESPACE_OPTIONS.common
 
