@@ -46,7 +46,6 @@ export const LeftSlideDialog: React.FC<Props> = ({
   width,
   isHideCancelBtn,
 }: Props) => {
-  DialogStyle.muiPaperRoot.width = width ? `${width}px` : defaultWidth
   return (
     <Dialog
       open={isOpen}
@@ -54,6 +53,11 @@ export const LeftSlideDialog: React.FC<Props> = ({
       keepMounted
       onClose={closeCallBack}
       aria-describedby="alert-dialog-slide-description"
+      PaperProps={{
+        style: {
+          width: width ? `${width}px` : defaultWidth,
+        },
+      }}
       sx={{
         '& .MuiDialog-container': DialogStyle.muiDialogContainer,
         '& .MuiPaper-root': DialogStyle.muiPaperRoot,
