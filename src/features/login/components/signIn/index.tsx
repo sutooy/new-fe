@@ -112,9 +112,13 @@ export const SignIn = ({ displayForgotPass }: Props) => {
             </div>
           </form>
         </div>
-        <button className={signInStyle.forgotPass} onClick={displayForgotPass}>
+        <Button
+          variant="text"
+          className={signInStyle.forgotPass}
+          onClick={displayForgotPass}
+        >
           {loginT('login.forgot')}
-        </button>
+        </Button>
       </div>
     </div>
   )

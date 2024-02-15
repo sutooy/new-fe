@@ -47,7 +47,11 @@ export const forgotPassStyle = {
     zIndex: '1',
     fontSize: 16,
   }),
-  errorColumnMessage: style({}),
+  errorColumnMessage: style({
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: '5px',
+  }),
   errorLogo: style({}),
   btn: style({
     border: 0,

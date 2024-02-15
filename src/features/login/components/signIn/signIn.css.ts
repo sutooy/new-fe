@@ -124,7 +124,11 @@ export const signInStyle = {
     color: '#8492a6',
     transition: '0.3s',
   }),
-  errorColumnMessage: style({}),
+  errorColumnMessage: style({
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: '5px',
+  }),
   errorLogo: style({}),
   showPassIcon: style({
     display: 'flex',
@@ -142,10 +146,12 @@ export const signInStyle = {
   }),
   spinner: style({}),
   forgotPass: style({
-    display: 'inline',
     cursor: 'pointer',
     backgroundColor: 'transparent',
     border: 'none',
     color: '#8492a6',
+    width: '40%',
+    left: '50%',
+    transform: 'translateX(-50%)',
   }),
 }

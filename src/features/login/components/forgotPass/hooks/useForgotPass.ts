@@ -34,7 +34,6 @@ export const useForgotPass = () => {
             newMessage: loginT(row.data.forgotPassword.message),
             newSeverity: 'success',
           })
-          router.push('/dashboard')
         }
       })
       .catch((error: any) => {
