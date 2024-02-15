@@ -22,8 +22,4 @@ export const MenuStyle = {
       },
     },
   }),
-  menu: style({
-    borderRadius: '8px!important',
-    padding: '4px!important',
-  }),
 }

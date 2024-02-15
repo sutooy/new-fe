@@ -75,13 +75,31 @@ export const ProfileMenu: React.FC = () => {
         open={open}
         onClose={() => handleCloseMenu()}
         onClick={() => handleCloseMenu()}
-        PaperProps={{
-          elevation: 0,
-          className: MenuStyle.menu,
-          sx: {
+        autoFocus={false}
+        sx={{
+          top: '10px',
+          overflow: 'auto',
+          '& .MuiPaper-root::before': {
+            content: '""',
+            display: 'block',
+            position: 'absolute',
+            top: 0,
+            right: 14,
+            width: 10,
+            height: 10,
+            bgcolor: 'background.paper',
+            transform: 'translateY(-50%) rotate(45deg)',
+            zIndex: 0,
+          },
+        }}
+        MenuListProps={{
+          style: {
+            borderRadius: '8px',
+            padding: '4px',
             overflow: 'visible',
             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-            mt: 1.5,
+          },
+          sx: {
             '& .MuiList-root': {
               padding: 0,
             },
@@ -94,19 +112,6 @@ export const ProfileMenu: React.FC = () => {
             '& .MuiSvgIcon-root': {
               fontSize: '18px',
               fontWeight: 'bold',
-            },
-
-            '&::before': {
-              content: '""',
-              display: 'block',
-              position: 'absolute',
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: 'background.paper',
-              transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
             },
           },
         }}
