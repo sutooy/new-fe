@@ -77,9 +77,9 @@ export const SignIn = ({ displayForgotPass }: Props) => {
                         edge="end"
                       >
                         {showPassword ? (
-                          <VisibilityOffIcon />
-                        ) : (
                           <VisibilityIcon />
+                        ) : (
+                          <VisibilityOffIcon />
                         )}
                       </IconButton>
                     </InputAdornment>
