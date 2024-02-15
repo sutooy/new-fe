@@ -86,7 +86,7 @@ export const signInStyle = {
     flexDirection: 'column',
     width: '400px',
     height: '260px',
-    margin: '10px auto',
+    margin: '5px auto 10px',
   }),
   form: style({
     display: 'flex',

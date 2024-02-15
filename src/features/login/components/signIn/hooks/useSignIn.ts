@@ -10,33 +10,17 @@ import { validation_login } from '@/validations/validationSchema'
 import { useMutation } from '@apollo/client'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 export const useSignIn = () => {
   const { t: loginT } = useTranslation(NAMESPACE_OPTIONS.login)
   const router = useRouter()
   const [login] = useMutation<LoginMutation>(LoginDocument)
-  const [requestError, setRequestError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const showSnackbar = useSnackbar()
   const [showPassword, setShowPassword] = useState(false)
   const handleShowPassword = () => setShowPassword((prev) => !prev)
-
-  useEffect(() => {
-    reset()
-    if (requestError) {
-      if (requestError === loginT('Email Not Registered')) {
-        setError('username', {
-          message: loginT('The email provided is not registered'),
-        })
-      } else if (requestError === loginT('Wrong Password')) {
-        setError('password', {
-          message: loginT('Sorry, your password was incorrect.'),
-        })
-      }
-    }
-  }, [requestError])
 
   const {
     register,
@@ -61,7 +45,6 @@ export const useSignIn = () => {
         }
       })
       .catch((error: any) => {
-        setRequestError(error.message)
         showSnackbar({ newMessage: error.message, newSeverity: 'error' })
       })
       .finally(() => {
@@ -77,8 +60,6 @@ export const useSignIn = () => {
     setError,
     handleSubmit,
     errors,
-    requestError,
-    setRequestError,
     isLoading,
     setIsLoading,
     reset,

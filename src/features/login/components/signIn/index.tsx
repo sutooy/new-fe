@@ -25,7 +25,7 @@ export const SignIn = ({ displayForgotPass }: Props) => {
     <div className={signInStyle.cardContainer}>
       <div className={signInStyle.title}>{loginT('login.title')}</div>
       <div className={signInStyle.content}>
-        <div style={{ margin: '-5px 0 0 0' }} className={signInStyle.content}>
+        <div className={signInStyle.content}>
           <form className={signInStyle.form} onSubmit={handleSubmit(onSubmit)}>
             <div
               className={
