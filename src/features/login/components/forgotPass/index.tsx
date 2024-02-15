@@ -55,6 +55,7 @@ export const ForgotPass = ({ hideForgotPass }: Props) => {
               variant="contained"
               className={forgotPassStyle.btnSubmit}
               type="submit"
+              color="primary"
             >
               {loginT('forgot.button')}
             </Button>

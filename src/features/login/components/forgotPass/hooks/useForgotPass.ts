@@ -9,12 +9,10 @@ import { NAMESPACE_OPTIONS } from '@/i18n/settings'
 import { validation_email } from '@/validations/validationSchema'
 import { useMutation } from '@apollo/client'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
 export const useForgotPass = () => {
   const { t: loginT } = useTranslation(NAMESPACE_OPTIONS.login)
-  const router = useRouter()
   const [forgotPass] = useMutation<ForgotPassMutation>(ForgotPassDocument)
   const showSnackbar = useSnackbar()
 
