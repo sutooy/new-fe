@@ -93,12 +93,11 @@ export const signInStyle = {
     flexDirection: 'column',
     alignItems: 'flex-start',
     margin: '10px auto',
-    marginTop: '1em',
   }),
   inputGroup: style({
     display: 'flex',
     position: 'relative',
-    marginTop: '1.5rem',
+    marginBottom: '2.5rem',
     width: '300px',
     height: '50px',
     borderRadius: '0.5rem',

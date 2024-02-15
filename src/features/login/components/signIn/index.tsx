@@ -1,5 +1,4 @@
 import DonutLargeIcon from '@mui/icons-material/DonutLarge'
-import ErrorIcon from '@mui/icons-material/Error'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import { Button, IconButton, InputAdornment, TextField } from '@mui/material'
@@ -38,22 +37,15 @@ export const SignIn = ({ displayForgotPass }: Props) => {
               <TextField
                 id="name"
                 type="text"
-                className={`${signInStyle.inputControl} ${
-                  errors.username ? signInStyle.error : ''
-                }`}
+                className={signInStyle.inputControl}
                 {...register('username')}
                 label={loginT('login.username')}
+                error={
+                  errors.username !== null && errors.username !== undefined
+                }
+                helperText={errors?.username?.message}
               />
             </div>
-            {errors.username && (
-              <div className={signInStyle.errorColumnMessage}>
-                <div className={signInStyle.errorLogo}>
-                  <ErrorIcon />
-                </div>
-                {errors.username.message}
-              </div>
-            )}
-
             <div
               className={
                 errors.password
@@ -64,11 +56,13 @@ export const SignIn = ({ displayForgotPass }: Props) => {
               <TextField
                 id="password"
                 type={showPassword ? 'text' : 'password'}
-                className={`${signInStyle.inputControl} ${
-                  errors.password ? signInStyle.error : ''
-                }`}
+                className={`${signInStyle.inputControl} ${errors.password}`}
                 label={loginT('login.password')}
                 {...register('password')}
+                error={
+                  errors.password !== null && errors.password !== undefined
+                }
+                helperText={errors?.password?.message}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -88,16 +82,6 @@ export const SignIn = ({ displayForgotPass }: Props) => {
                 }}
               />
             </div>
-
-            {errors.password && (
-              <div className={signInStyle.errorColumnMessage}>
-                <div className={signInStyle.errorLogo}>
-                  <ErrorIcon />
-                </div>
-                {errors.password.message}
-              </div>
-            )}
-
             <div className={signInStyle.inputGroup}>
               <Button
                 variant="contained"
