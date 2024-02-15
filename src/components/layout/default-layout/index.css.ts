@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles'
+import { originalTheme } from '@/contexts/originalThemeContext'
 import { style } from '@vanilla-extract/css'
 
 export const Style = {
@@ -24,7 +24,7 @@ export const Style = {
 }
 
 const drawerWidth = 240
-const theme = createTheme()
+const theme = originalTheme
 
 export const Drawer = {
   drawer: style({
