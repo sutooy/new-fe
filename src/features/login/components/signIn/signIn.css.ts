@@ -104,7 +104,6 @@ export const signInStyle = {
     padding: '1.6px',
   }),
   inputGroupBtn: style({}),
-  error: style({}),
   inputControl: style({
     width: '100%',
     height: '100%',
@@ -123,12 +122,6 @@ export const signInStyle = {
     color: '#8492a6',
     transition: '0.3s',
   }),
-  errorColumnMessage: style({
-    display: 'flex',
-    flexDirection: 'row',
-    marginTop: '5px',
-  }),
-  errorLogo: style({}),
   showPassIcon: style({
     display: 'flex',
     alignItems: 'center',

@@ -27,13 +27,7 @@ export const SignIn = ({ displayForgotPass }: Props) => {
       <div className={signInStyle.content}>
         <div className={signInStyle.content}>
           <form className={signInStyle.form} onSubmit={handleSubmit(onSubmit)}>
-            <div
-              className={
-                errors.username
-                  ? `${signInStyle.inputGroup} ${signInStyle.error}`
-                  : signInStyle.inputGroup
-              }
-            >
+            <div className={signInStyle.inputGroup}>
               <TextField
                 id="name"
                 type="text"
@@ -46,13 +40,7 @@ export const SignIn = ({ displayForgotPass }: Props) => {
                 helperText={errors?.username?.message}
               />
             </div>
-            <div
-              className={
-                errors.password
-                  ? `${signInStyle.inputGroup} ${signInStyle.error}`
-                  : signInStyle.inputGroup
-              }
-            >
+            <div className={signInStyle.inputGroup}>
               <TextField
                 id="password"
                 type={showPassword ? 'text' : 'password'}
