@@ -1,5 +1,4 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import ErrorIcon from '@mui/icons-material/Error'
 import { Button, TextField } from '@mui/material'
 import { forgotPassStyle } from './forgotPass.css'
 import { useForgotPass } from './hooks/useForgotPass'
@@ -16,7 +15,6 @@ export const ForgotPass = ({ hideForgotPass }: Props) => {
       <div className={forgotPassStyle.backIcon} onClick={hideForgotPass}>
         <ArrowBackIcon />
       </div>
-
       <div className={forgotPassStyle.titleForgot}>
         {loginT('forgot.title')}
       </div>
@@ -31,24 +29,12 @@ export const ForgotPass = ({ hideForgotPass }: Props) => {
           <TextField
             id="name"
             type="text"
-            className={
-              errors.email
-                ? `${forgotPassStyle.inputGroup} ${forgotPassStyle.error}`
-                : forgotPassStyle.inputGroup
-            }
             label="Email"
+            className={forgotPassStyle.inputGroup}
             {...register('email')}
+            error={errors.email !== null && errors.email !== undefined}
+            helperText={errors?.email?.message}
           />
-
-          {errors.email && (
-            <div className={forgotPassStyle.errorColumnMessage}>
-              <div className={forgotPassStyle.errorLogo}>
-                <ErrorIcon />
-              </div>
-              {errors.email.message}
-            </div>
-          )}
-
           <div
             className={`${forgotPassStyle.inputGroup} ${forgotPassStyle.btn}`}
           >

@@ -27,14 +27,7 @@ export const forgotPassStyle = {
     marginTop: '1em',
   }),
   inputGroup: style({
-    display: 'flex',
-    position: 'relative',
-    marginTop: '1.5rem',
     width: '300px',
-    height: '50px',
-    borderRadius: '0.5rem',
-    padding: '1.6px',
-    border: '1px solid #8492a6',
   }),
   inputGroupBtn: style({}),
   error: style({}),
@@ -55,6 +48,7 @@ export const forgotPassStyle = {
   errorLogo: style({}),
   btn: style({
     border: 0,
+    marginTop: '30px',
   }),
   btnSubmit: style({
     WebkitAppearance: 'button',
