@@ -13,7 +13,6 @@ export const FloatingProfile: React.FC<Props> = ({ property }: Props) => {
   const [isFixedNav, serIsFixedNav] = useState(false)
 
   const windowScroll = () => {
-    debugger
     serIsFixedNav(window.scrollY > 50)
   }
   // アカウントの追従バー
