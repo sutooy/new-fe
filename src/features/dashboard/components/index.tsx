@@ -1,6 +1,5 @@
 'use client'
 
-import { ClientWrapperLayout } from '@/components/layout/client-wrapper'
 import { H1Header } from '@/components/shared/h1-header'
 import { GetUserDocument, GetUserQuery } from '@/generated/graphql'
 import { useTranslation } from '@/i18n/client'
@@ -23,98 +22,96 @@ export const Dashboard = () => {
   // if (!data?.user) return
   return (
     <>
-      <ClientWrapperLayout>
-        <H1Header
-          title="タイトル"
-          subText="subテキストsubテキストsubテキストsubテキストsubテキストsubテキストsubテキストsubテキストsubテキストsubテキスト"
-        />
-        {/* {data.user.name} */}
-        <Button
-          onClick={() => {
-            router.push('/')
-          }}
-        >
-          {dashboardT('title')}
-        </Button>
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-        ダッシュボード
-        <br />
-      </ClientWrapperLayout>
+      <H1Header
+        title="タイトル"
+        subText="subテキストsubテキストsubテキストsubテキストsubテキストsubテキストsubテキストsubテキストsubテキストsubテキスト"
+      />
+      {/* {data.user.name} */}
+      <Button
+        onClick={() => {
+          router.push('/')
+        }}
+      >
+        {dashboardT('title')}
+      </Button>
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
+      ダッシュボード
+      <br />
     </>
   )
 }
