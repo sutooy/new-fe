@@ -1,7 +1,8 @@
+import DonutLargeIcon from '@mui/icons-material/DonutLarge'
+import ErrorIcon from '@mui/icons-material/Error'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import { Button, IconButton, InputAdornment, TextField } from '@mui/material'
-import * as FaIcon from 'react-icons/fa'
 import { useSignIn } from './hooks/useSignIn'
 import { signInStyle } from './signIn.css'
 
@@ -47,7 +48,7 @@ export const SignIn = ({ displayForgotPass }: Props) => {
             {errors.username && (
               <div className={signInStyle.errorColumnMessage}>
                 <div className={signInStyle.errorLogo}>
-                  <FaIcon.FaExclamationCircle />
+                  <ErrorIcon />
                 </div>
                 {errors.username.message}
               </div>
@@ -91,7 +92,7 @@ export const SignIn = ({ displayForgotPass }: Props) => {
             {errors.password && (
               <div className={signInStyle.errorColumnMessage}>
                 <div className={signInStyle.errorLogo}>
-                  <FaIcon.FaExclamationCircle />
+                  <ErrorIcon />
                 </div>
                 {errors.password.message}
               </div>
@@ -104,7 +105,7 @@ export const SignIn = ({ displayForgotPass }: Props) => {
                 type="submit"
               >
                 {isLoading ? (
-                  <FaIcon.FaCircleNotch className={signInStyle.spinner} />
+                  <DonutLargeIcon className={signInStyle.spinner} />
                 ) : (
                   loginT('login.button')
                 )}

@@ -1,5 +1,6 @@
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import ErrorIcon from '@mui/icons-material/Error'
 import { Button, TextField } from '@mui/material'
-import * as FaIcon from 'react-icons/fa'
 import { forgotPassStyle } from './forgotPass.css'
 import { useForgotPass } from './hooks/useForgotPass'
 
@@ -13,7 +14,7 @@ export const ForgotPass = ({ hideForgotPass }: Props) => {
   return (
     <div className={forgotPassStyle.cardContainer}>
       <div className={forgotPassStyle.backIcon} onClick={hideForgotPass}>
-        <FaIcon.FaArrowLeft />
+        <ArrowBackIcon />
       </div>
 
       <div className={forgotPassStyle.titleForgot}>
@@ -42,7 +43,7 @@ export const ForgotPass = ({ hideForgotPass }: Props) => {
           {errors.email && (
             <div className={forgotPassStyle.errorColumnMessage}>
               <div className={forgotPassStyle.errorLogo}>
-                <FaIcon.FaExclamationCircle />
+                <ErrorIcon />
               </div>
               {errors.email.message}
             </div>
