@@ -9,6 +9,7 @@ import { NAMESPACE_OPTIONS } from '@/i18n/settings'
 import { validation_login } from '@/validations/validationSchema'
 import { useMutation } from '@apollo/client'
 import { yupResolver } from '@hookform/resolvers/yup'
+import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -40,6 +41,11 @@ export const useSignIn = () => {
           showSnackbar({
             newMessage: loginT('LOGGED IN OK!!'),
             newSeverity: 'success',
+          })
+          Cookies.set('token', row.data.login.token, {
+            path: '/',
+            secure: true,
+            sameSite: 'none',
           })
           router.push('/dashboard')
         }
