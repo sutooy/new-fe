@@ -118,10 +118,11 @@ export const ProfileMenu: React.FC = () => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        {menuList.map((menu: Menu) => (
+        {menuList.map((menu: Menu, index: number) => (
           <MenuItem
             onClick={() => handleCloseMenu(menu.action)}
             className={MenuStyle.menuItem}
+            key={index.toString()}
           >
             {menu.icon}
             {menu.title}
