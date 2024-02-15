@@ -1,6 +1,6 @@
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
-import { IconButton, InputAdornment, TextField } from '@mui/material'
+import { Button, IconButton, InputAdornment, TextField } from '@mui/material'
 import * as FaIcon from 'react-icons/fa'
 import { useSignIn } from './hooks/useSignIn'
 import { signInStyle } from './signIn.css'
@@ -97,14 +97,18 @@ export const SignIn = ({ displayForgotPass }: Props) => {
               </div>
             )}
 
-            <div className={signInStyle.inputGroupBtn}>
-              <button className={signInStyle.btnSubmit} type="submit">
+            <div className={signInStyle.inputGroup}>
+              <Button
+                variant="contained"
+                className={signInStyle.btnSubmit}
+                type="submit"
+              >
                 {isLoading ? (
                   <FaIcon.FaCircleNotch className={signInStyle.spinner} />
                 ) : (
                   loginT('login.button')
                 )}
-              </button>
+              </Button>
             </div>
           </form>
         </div>

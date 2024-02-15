@@ -31,7 +31,7 @@ export const Login = () => {
           <SignIn displayForgotPass={handleDisplayForgotPass} />
         </div>
       )}
-      <Footer></Footer>
+      <Footer />
     </div>
   )
 }

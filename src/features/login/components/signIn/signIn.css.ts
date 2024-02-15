@@ -66,13 +66,14 @@ export const signInStyle = {
   }),
   cardContainer: style({
     position: 'absolute',
-    width: '500px',
+    width: '400px',
     height: '450px',
     backgroundColor: 'white',
     borderRadius: '5px',
     right: '150px',
     top: '120px',
     boxShadow: '4px 6px 10px 4px rgba(0,0,0,0.2)',
+    textAlign: 'center',
   }),
   title: style({
     paddingTop: 50,
@@ -137,6 +138,7 @@ export const signInStyle = {
   }),
   btnSubmit: style({
     WebkitAppearance: 'button',
+    width: '100%',
   }),
   spinner: style({}),
   forgotPass: style({

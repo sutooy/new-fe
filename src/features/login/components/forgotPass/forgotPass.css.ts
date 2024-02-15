@@ -4,7 +4,7 @@ import { style } from '@vanilla-extract/css'
 export const forgotPassStyle = {
   cardContainer: style({
     position: 'absolute',
-    width: '500px',
+    width: '400px',
     height: '450px',
     backgroundColor: 'white',
     borderRadius: '5px',
@@ -34,6 +34,7 @@ export const forgotPassStyle = {
     height: '50px',
     borderRadius: '0.5rem',
     padding: '1.6px',
+    border: '1px solid #8492a6',
   }),
   inputGroupBtn: style({}),
   error: style({}),
@@ -53,8 +54,31 @@ export const forgotPassStyle = {
   }),
   btnSubmit: style({
     WebkitAppearance: 'button',
+    width: '100%',
   }),
-  backIcon: style({}),
-  titleForgot: style({}),
-  subTitle: style({}),
+  backIcon: style({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '30px',
+    height: '30px',
+    marginTop: '30px',
+    marginLeft: '30px',
+    fontSize: '30px',
+    color: '#4f5763',
+    cursor: 'pointer',
+  }),
+  titleForgot: style({
+    fontFamily: '"Open Sans", sans-serif',
+    paddingTop: '20px',
+    fontSize: '28px',
+    fontWeight: 'bold',
+    color: '#4f5763',
+  }),
+  subTitle: style({
+    fontFamily: '"Open Sans", sans-serif',
+    color: '#8492a6',
+    fontSize: '14px',
+    margin: '5px 90px',
+  }),
 }
