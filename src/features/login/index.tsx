@@ -5,30 +5,31 @@ import mouvsLogo from '@/images/logo-movus-grey.svg'
 import Image from 'next/image'
 import { ForgotPass } from './components/forgotPass'
 import { LoginIndexBackground } from './components/loginBackground'
-import { SignIn } from './components/signIn'
-import { useLogin } from './hooks/useLogin'
-import { loginStyle } from './login.css'
 
-export const Login = () => {
+import { Login } from './components/login'
+import { useLoginContainer } from './hooks/useLoginContainer'
+import { loginContainerStyle } from './loginContainer.css'
+
+export const LoginContainer = () => {
   const { displayForgotPass, handleHideForgotPass, handleDisplayForgotPass } =
-    useLogin()
+    useLoginContainer()
 
   return (
-    <div className={loginStyle.baseContainer}>
-      <div className={loginStyle.movusLogo}>
+    <div className={loginContainerStyle.baseContainer}>
+      <div className={loginContainerStyle.movusLogo}>
         <Image src={mouvsLogo} width="200" height="32" alt="movus"></Image>
       </div>
-      <div className={loginStyle.cityMap}>
+      <div className={loginContainerStyle.cityMap}>
         <LoginIndexBackground />
       </div>
 
       {displayForgotPass ? (
-        <div className={loginStyle.app}>
+        <div className={loginContainerStyle.app}>
           <ForgotPass hideForgotPass={handleHideForgotPass} />
         </div>
       ) : (
         <div>
-          <SignIn displayForgotPass={handleDisplayForgotPass} />
+          <Login displayForgotPass={handleDisplayForgotPass} />
         </div>
       )}
       <Footer />
