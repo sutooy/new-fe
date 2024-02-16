@@ -1,0 +1,88 @@
+{
+  "dashboard": {
+    "mainMenu": "Dashboard"
+  },
+  "customer": {
+    "mainMenu": "Customer",
+    "subMenu": {
+      "customer": "Customer",
+      "application": "Application"
+    }
+  },
+  "bookingManagement": {
+    "mainMenu": "Booking Management"
+  },
+  "vehicleManagement": {
+    "mainMenu": "Vehicle Management",
+    "subMenu": {
+      "vehicleManagement": "Vehicle Management",
+      "wirelessGPSList": "Wireless GPS List"
+    }
+  },
+  "carMaintenance": {
+    "mainMenu": "Car Maintenance",
+    "subMenu": {
+      "vehicleManagement": "Regular Maintenance",
+      "carStock": "Car Stock",
+      "maintenanceItem": "Maintenance Item",
+      "workshop": "Workshop"
+    }
+  },
+  "CSManagement": {
+    "mainMenu": "CS Management",
+    "subMenu": {
+      "STNK": "STNK",
+      "Insurance": "Insurance",
+      "turnOffCar": "Turn off Car"
+    }
+  },
+  "collectionManagement": {
+    "mainMenu": "Collection Management",
+    "subMenu": {
+      "collection": "Collection",
+      "engineOff": "Engine Off",
+      "carAtWorkshop": "Car at Workshop",
+      "customerTermination": "Customer Termination"
+    }
+  },
+  "salesPipeline": {
+    "mainMenu": "Sales Pipeline",
+    "subMenu": {
+      "salesOverview": "Sales Overview",
+      "customerPipeline": "Customer Pipeline",
+      "salesLeads": "Sales Leads",
+      "lostCustomer": "Lost Customer",
+      "creditCheck": "Credit Check",
+      "surveyor": "Surveyor",
+      "agent": "Agent"
+    }
+  },
+  "vehicleMonitoring": {
+    "mainMenu": "Vehicle Monitoring"
+  },
+  "contentManagement": {
+    "mainMenu": "Content Management"
+  },
+  "adminUser": {
+    "mainMenu": "Admin User",
+    "subMenu": {
+      "user": "User",
+      "userRole": "User Role",
+      "customerPipeline": "Customer Pipeline",
+      "salesLeads": "Sales Leads",
+      "lostCustomer": "Lost Customer",
+      "creditCheck": "Credit Check",
+      "surveyor": "Surveyor",
+      "agent": "Agent"
+    }
+  },
+  "userDetail": {
+    "mainMenu": "User Detail"
+  },
+  "logActivity": {
+    "mainMenu": "Log Activity"
+  },
+  "CustomerData": {
+    "mainMenu": "Customer Data"
+  }
+}

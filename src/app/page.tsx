@@ -1,9 +1,9 @@
-import { getTranslation } from '@/i18n'
+import { getTranslation } from '@/i18n';
 import {
   DEFAULT_NS,
   KEY_PREFIX_OPTIONS,
   LANGUAGE_OPTIONS,
-} from '@/i18n/settings'
+} from '@/i18n/settings';
 
 export async function generateMetadata({
   params: { lng = LANGUAGE_OPTIONS.ENGLISH },
@@ -18,5 +18,5 @@ export async function generateMetadata({
 }
 
 export default function Page() {
-  return <>おはよう</>
+  return <>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/>おはよう<br/></>
 }
