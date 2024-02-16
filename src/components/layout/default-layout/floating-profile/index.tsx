@@ -1,7 +1,7 @@
 'use client'
+import { Notifications } from '@/components/layout/default-layout/notifications'
+import { ProfileMenu } from '@/components/layout/default-layout/profile-menu'
 import React, { useEffect, useState } from 'react'
-import { Notifications } from '../notifications'
-import { ProfileMenu } from '../profile-menu'
 import { Style } from './index.css'
 type Props = {
   // todo アカウント情報

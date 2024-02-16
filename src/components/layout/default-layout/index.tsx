@@ -1,6 +1,6 @@
 'use client'
-import { FloatingProfile } from '@/components/layout/floating-profile'
-import { Menu } from '@/components/layout/menu/index'
+import { FloatingProfile } from '@/components/layout/default-layout/floating-profile'
+import { SystemMenu } from '@/components/layout/default-layout/system-menu/index'
 import mouvsLogo from '@/images/logo-movus-grey.svg'
 import CancelIcon from '@mui/icons-material/Cancel'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -91,7 +91,7 @@ export const DefaultLayout: React.FC<Props> = ({ children }: Props) => {
           </IconButton>
         </div>
         {/* メニュー */}
-        <Menu isMin={isMin} />
+        <SystemMenu isMin={isMin} />
       </MuiDrawer>
       <div className={Style.main}>
         {/* フローティングアカウント */}

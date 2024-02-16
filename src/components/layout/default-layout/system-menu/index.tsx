@@ -104,7 +104,7 @@ const createMenu = (
   ]
 }
 
-export const Menu: React.FC<Props> = ({ isMin }: Props) => {
+export const SystemMenu: React.FC<Props> = ({ isMin }: Props) => {
   const router = useRouter()
 
   // メニューリスト
@@ -113,7 +113,7 @@ export const Menu: React.FC<Props> = ({ isMin }: Props) => {
 
   // サブメニュー開閉フラグ
   const [openSubMenu, setOpenSubMenu] = useState<boolean[]>(
-    new Array<boolean>(Menu.length).fill(false)
+    new Array<boolean>(SystemMenu.length).fill(false)
   )
 
   // サブメニュー開閉トグル
