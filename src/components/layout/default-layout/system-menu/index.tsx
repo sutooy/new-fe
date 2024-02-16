@@ -113,7 +113,7 @@ export const SystemMenu: React.FC<Props> = ({ isMin }: Props) => {
 
   // サブメニュー開閉フラグ
   const [openSubMenu, setOpenSubMenu] = useState<boolean[]>(
-    new Array<boolean>(SystemMenu.length).fill(false)
+    new Array<boolean>(menuList.length).fill(false)
   )
 
   // サブメニュー開閉トグル
