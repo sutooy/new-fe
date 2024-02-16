@@ -14,7 +14,7 @@ export const originalTheme = createTheme({
   },
   palette: {
     primary: {
-      main: red[800],
+      main: red[700],
     },
   },
   typography: {

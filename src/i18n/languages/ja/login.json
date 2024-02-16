@@ -1,6 +1,7 @@
 {
   "metadata": {
     "title": "ログイン",
-    "description": "ログイン"
+    "description": "ログイン",
+    "forgot": "パスワードを忘れた"
   }
 }

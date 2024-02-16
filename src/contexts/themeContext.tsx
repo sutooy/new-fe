@@ -1,4 +1,5 @@
 'use client'
+
 import { originalTheme } from '@/constants/originalThemeContext'
 import { CssBaseline } from '@mui/material'
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles'

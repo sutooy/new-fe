@@ -1,4 +1,4 @@
-import { Login } from '@/features/login/components/index'
+import { LoginContainer } from '@/features/login'
 import { getTranslation } from '@/i18n'
 import {
   DEFAULT_NS,
@@ -19,5 +19,5 @@ export async function generateMetadata({
 }
 
 export default function Page() {
-  return <Login></Login>
+  return <LoginContainer></LoginContainer>
 }

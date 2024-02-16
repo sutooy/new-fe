@@ -36,3 +36,4 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache
           build-args: |
             ENVIRONMENT=development
+            SENTRY_AUTH_TOKEN=development
