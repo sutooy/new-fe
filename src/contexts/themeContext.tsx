@@ -1,8 +1,8 @@
 'use client'
+import { originalTheme } from '@/constants/originalThemeContext'
 import { CssBaseline } from '@mui/material'
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles'
 import { ReactNode } from 'react'
-import { originalTheme } from './originalThemeContext'
 
 const theme = originalTheme
 
@@ -16,4 +16,3 @@ export const ThemeProvider = ({ children }: Props) => {
     </MuiThemeProvider>
   )
 }
-export { originalTheme }

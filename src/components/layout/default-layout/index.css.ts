@@ -1,4 +1,4 @@
-import { originalTheme } from '@/contexts/originalThemeContext'
+import { originalTheme } from '@/constants/originalThemeContext'
 import { style } from '@vanilla-extract/css'
 
 export const Style = {
