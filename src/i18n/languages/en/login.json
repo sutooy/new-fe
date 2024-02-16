@@ -1,6 +1,23 @@
 {
-  "metadata": {
-    "title": "Login",
-    "description": "login"
+  "login": {
+    "title": "Sign In",
+    "email": "Email",
+    "password": "Password",
+    "forgot": "Forgot password?",
+    "button": "Sign in",
+    "username": "Username"
+  },
+  "footer": {
+    "social_title": "Connect with us",
+    "app_title": "Download movus app",
+    "privpol": "Privacy Policy",
+    "tnc": "Terms & Conditions",
+    "help": "Help Center",
+    "bottom_desc": "All right reserved."
+  },
+  "forgot": {
+    "title": "Forgot your password?",
+    "sub_title": "Enter your email address below and we will send you a link to reset your password.",
+    "button": "Send email"
   }
 }

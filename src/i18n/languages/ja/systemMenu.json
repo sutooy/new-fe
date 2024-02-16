@@ -1,0 +1,88 @@
+{
+  "dashboard": {
+    "mainMenu": "ダッシュボード"
+  },
+  "customer": {
+    "mainMenu": "顧客",
+    "subMenu": {
+      "customer": "顧客",
+      "application": "アプリケーション"
+    }
+  },
+  "bookingManagement": {
+    "mainMenu": "予約管理"
+  },
+  "vehicleManagement": {
+    "mainMenu": "車両管理",
+    "subMenu": {
+      "vehicleManagement": "車両管理",
+      "wirelessGPSList": "ワイヤレスGPSリスト"
+    }
+  },
+  "carMaintenance": {
+    "mainMenu": "カーメンテナンス",
+    "subMenu": {
+      "vehicleManagement": "定期メンテナンス",
+      "carStock": "車両在庫",
+      "maintenanceItem": "メンテナンス項目",
+      "workshop": "ワークショップ"
+    }
+  },
+  "CSManagement": {
+    "mainMenu": "CS管理",
+    "subMenu": {
+      "STNK": "STNK",
+      "Insurance": "保険",
+      "turnOffCar": "車両返却"
+    }
+  },
+  "collectionManagement": {
+    "mainMenu": "コレクション管理",
+    "subMenu": {
+      "collection": "コレクション",
+      "engineOff": "エンジンオフ",
+      "carAtWorkshop": "ワークショップに車",
+      "customerTermination": "顧客の終了"
+    }
+  },
+  "salesPipeline": {
+    "mainMenu": "セールスパイプライン",
+    "subMenu": {
+      "salesOverview": "営業概要",
+      "customerPipeline": "顧客パイプライン",
+      "salesLeads": "セールス・リード",
+      "lostCustomer": "失客",
+      "creditCheck": "信用調査",
+      "surveyor": "調査員",
+      "agent": "エージェント"
+    }
+  },
+  "vehicleMonitoring": {
+    "mainMenu": "車両監視"
+  },
+  "contentManagement": {
+    "mainMenu": "コンテンツ管理"
+  },
+  "adminUser": {
+    "mainMenu": "管理者",
+    "subMenu": {
+      "user": "ユーザー",
+      "userRole": "ユーザーロール",
+      "customerPipeline": "顧客パイプライン",
+      "salesLeads": "セールスリード",
+      "lostCustomer": "失客",
+      "creditCheck": "信用調査",
+      "surveyor": "調査員",
+      "agent": "エージェント"
+    }
+  },
+  "userDetail": {
+    "mainMenu": "ユーザー詳細"
+  },
+  "logActivity": {
+    "mainMenu": "ログアクティビティ"
+  },
+  "CustomerData": {
+    "mainMenu": "顧客データ"
+  }
+}
