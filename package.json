@@ -7,10 +7,12 @@
     "build": "yarn clean:dist && yarn clean:next && next build",
     "clean:dist": "rimraf src/**/dist",
     "clean:next": "rimraf .next out",
+    "build:development": "env-cmd -f .env.development next build",
+    "build:staging": "env-cmd -f .env.staging next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'",
-    "schema": "NODE_ENV=development graphql-codegen --config codegen.ts"
+    "schema": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
     "@apollo/client": "^3.8.8",
@@ -22,7 +24,9 @@
     "@mui/icons-material": "^5.15.8",
     "@mui/material": "^5.15.2",
     "@mui/material-nextjs": "^5.15.7",
+    "@sentry/nextjs": "^7.100.1",
     "@vanilla-extract/css": "^1.14.0",
+    "env-cmd": "^10.1.0",
     "graphql": "^16.8.1",
     "i18next": "^23.7.16",
     "i18next-browser-languagedetector": "^7.2.0",
